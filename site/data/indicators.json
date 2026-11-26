@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T17:56:40+00:00",
+ "generated_at": "2026-11-26T19:31:52+00:00",
  "period": {
   "from": "2025-11-01",
   "to": "2026-10-31"
@@ -111,6 +111,63 @@
      "direct": 13,
      "all": 25
     }
+   },
+   "entities": [
+    {
+     "code": "54511",
+     "name": "Οργανισμός Πολιτισμού, Αθλητισμού και Νεολαίας Δήμου Αθηναίων (ΝΠΔΔ)",
+     "contracts": 211,
+     "direct": 153,
+     "value": 9482343,
+     "direct_value": 1856182
+    },
+    {
+     "code": "51382",
+     "name": "Σχολικές Επιτροπές Δήμου Αθηναίων (ΝΠΔΔ)",
+     "contracts": 2,
+     "direct": 2,
+     "value": 33812,
+     "direct_value": 33812
+    }
+   ],
+   "with_entities": {
+    "contracts": 473,
+    "value": 178381425,
+    "direct": 285,
+    "direct_value": 3429966,
+    "direct_share_count": 60.3,
+    "direct_share_value": 1.9,
+    "direct_share_value_incl_flagged": 4.4,
+    "band_28_30": 33,
+    "band_share_of_direct": 11.6,
+    "repeat_pairs": 7,
+    "repeat_awards": 22,
+    "repeat_share_of_direct_value": 10.2,
+    "cum_same_pairs": 4,
+    "cum_same_share_of_direct_value": 12.3,
+    "cum_any_groups": 20,
+    "cum_any_share_of_direct_value": 52.0,
+    "top5_share_of_direct_value": 15.0,
+    "hhi_direct": 117,
+    "distinct_direct_contractors": 228,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 54,
+    "negotiated_value": 5982157,
+    "modifications": 67,
+    "modification_rate": 19.7,
+    "single_bidder_share": 74.4,
+    "single_bidder_n": 43,
+    "single_bidder_coverage": 22.9,
+    "data_completeness": 96.0,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 2.6,
+    "green_in_scope": 0,
+    "green_in_scope_share": 0.0,
+    "green_adopted_share": null,
+    "green_adopted_value_share": null,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 2,
+    "flagged_value": 4673708
    }
   },
   {
@@ -183,6 +240,71 @@
      "direct": 58,
      "all": 66
     }
+   },
+   "entities": [
+    {
+     "code": "53462",
+     "name": "Κοινωφελής Δημοτική Επιχείρηση Πειραιά (ΝΠΙΔ)",
+     "contracts": 55,
+     "direct": 55,
+     "value": 730421,
+     "direct_value": 730421
+    },
+    {
+     "code": "100010368",
+     "name": "Δημοτική Ραδιοφωνία Πειραιώς (ΝΠΙΔ)",
+     "contracts": 74,
+     "direct": 74,
+     "value": 315019,
+     "direct_value": 315019
+    },
+    {
+     "code": "100066352",
+     "name": "Πειραιάς ΣΥΝ, Αναπτυξιακός Οργανισμός ΤΑ (ΝΠΙΔ)",
+     "contracts": 35,
+     "direct": 28,
+     "value": 1778577,
+     "direct_value": 556413
+    }
+   ],
+   "with_entities": {
+    "contracts": 775,
+    "value": 25836881,
+    "direct": 680,
+    "direct_value": 4664073,
+    "direct_share_count": 87.7,
+    "direct_share_value": 18.1,
+    "direct_share_value_incl_flagged": 55.8,
+    "band_28_30": 49,
+    "band_share_of_direct": 7.2,
+    "repeat_pairs": 27,
+    "repeat_awards": 370,
+    "repeat_share_of_direct_value": 15.2,
+    "cum_same_pairs": 21,
+    "cum_same_share_of_direct_value": 24.2,
+    "cum_any_groups": 41,
+    "cum_any_share_of_direct_value": 66.3,
+    "top5_share_of_direct_value": 11.3,
+    "hhi_direct": 92,
+    "distinct_direct_contractors": 230,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 32,
+    "negotiated_value": 3361881,
+    "modifications": 51,
+    "modification_rate": 13.8,
+    "single_bidder_share": 45.0,
+    "single_bidder_n": 20,
+    "single_bidder_coverage": 21.1,
+    "data_completeness": 98.2,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 0.3,
+    "green_in_scope": 2,
+    "green_in_scope_share": 0.3,
+    "green_adopted_share": 100.0,
+    "green_adopted_value_share": 100.0,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 2,
+    "flagged_value": 22016120
    }
   },
   {
@@ -255,6 +377,55 @@
      "direct": 36,
      "all": 40
     }
+   },
+   "entities": [
+    {
+     "code": "50894",
+     "name": "Κοινωφελής Επιχείρηση Πολιτιστικής Ανάπτυξης Δήμου Περιστερίου (ΝΠΙΔ)",
+     "contracts": 130,
+     "direct": 123,
+     "value": 2441769,
+     "direct_value": 1673567
+    }
+   ],
+   "with_entities": {
+    "contracts": 506,
+    "value": 15725854,
+    "direct": 419,
+    "direct_value": 5686492,
+    "direct_share_count": 82.8,
+    "direct_share_value": 36.2,
+    "direct_share_value_incl_flagged": 36.2,
+    "band_28_30": 67,
+    "band_share_of_direct": 16.0,
+    "repeat_pairs": 21,
+    "repeat_awards": 78,
+    "repeat_share_of_direct_value": 17.1,
+    "cum_same_pairs": 16,
+    "cum_same_share_of_direct_value": 13.6,
+    "cum_any_groups": 49,
+    "cum_any_share_of_direct_value": 59.1,
+    "top5_share_of_direct_value": 17.0,
+    "hhi_direct": 137,
+    "distinct_direct_contractors": 201,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 8,
+    "negotiated_value": 233680,
+    "modifications": 23,
+    "modification_rate": 5.1,
+    "single_bidder_share": 60.0,
+    "single_bidder_n": 30,
+    "single_bidder_coverage": 34.5,
+    "data_completeness": 97.8,
+    "reg_lag_median_days": 0,
+    "reg_lag_over30_share": 0.7,
+    "green_in_scope": 7,
+    "green_in_scope_share": 1.4,
+    "green_adopted_share": 100.0,
+    "green_adopted_value_share": 100.0,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 0,
+    "flagged_value": 0
    }
   },
   {
@@ -327,6 +498,63 @@
      "direct": 32,
      "all": 73
     }
+   },
+   "entities": [
+    {
+     "code": "99219995",
+     "name": "Δημοτικό Βρεφοκομείο Θεσσαλονίκης «Άγιος Στυλιανός» (ΝΠΔΔ)",
+     "contracts": 74,
+     "direct": 65,
+     "value": 230882,
+     "direct_value": 79073
+    },
+    {
+     "code": "51729",
+     "name": "Σχολικές Επιτροπές Δήμου Θεσσαλονίκης (ΝΠΔΔ)",
+     "contracts": 54,
+     "direct": 52,
+     "value": 1378720,
+     "direct_value": 1058660
+    }
+   ],
+   "with_entities": {
+    "contracts": 737,
+    "value": 208763324,
+    "direct": 417,
+    "direct_value": 3243801,
+    "direct_share_count": 56.6,
+    "direct_share_value": 1.6,
+    "direct_share_value_incl_flagged": 1.8,
+    "band_28_30": 34,
+    "band_share_of_direct": 8.2,
+    "repeat_pairs": 19,
+    "repeat_awards": 75,
+    "repeat_share_of_direct_value": 14.3,
+    "cum_same_pairs": 7,
+    "cum_same_share_of_direct_value": 11.2,
+    "cum_any_groups": 22,
+    "cum_any_share_of_direct_value": 51.6,
+    "top5_share_of_direct_value": 15.0,
+    "hhi_direct": 110,
+    "distinct_direct_contractors": 288,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 76,
+    "negotiated_value": 11627250,
+    "modifications": 104,
+    "modification_rate": 18.6,
+    "single_bidder_share": 50.9,
+    "single_bidder_n": 55,
+    "single_bidder_coverage": 17.2,
+    "data_completeness": 93.7,
+    "reg_lag_median_days": 0,
+    "reg_lag_over30_share": 1.4,
+    "green_in_scope": 0,
+    "green_in_scope_share": 0.0,
+    "green_adopted_share": null,
+    "green_adopted_value_share": null,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 6,
+    "flagged_value": 562106
    }
   },
   {
@@ -399,6 +627,55 @@
      "direct": 51,
      "all": 57
     }
+   },
+   "entities": [
+    {
+     "code": "50326",
+     "name": "Μουσείο Φωτογραφίας «Χρήστος Καλεμκέρης» Δήμου Καλαμαριάς (ΝΠΔΔ)",
+     "contracts": 2,
+     "direct": 2,
+     "value": 6000,
+     "direct_value": 6000
+    }
+   ],
+   "with_entities": {
+    "contracts": 471,
+    "value": 7944992,
+    "direct": 434,
+    "direct_value": 1909980,
+    "direct_share_count": 92.1,
+    "direct_share_value": 24.0,
+    "direct_share_value_incl_flagged": 24.0,
+    "band_28_30": 11,
+    "band_share_of_direct": 2.5,
+    "repeat_pairs": 25,
+    "repeat_awards": 243,
+    "repeat_share_of_direct_value": 14.1,
+    "cum_same_pairs": 5,
+    "cum_same_share_of_direct_value": 10.0,
+    "cum_any_groups": 16,
+    "cum_any_share_of_direct_value": 44.9,
+    "top5_share_of_direct_value": 17.0,
+    "hhi_direct": 143,
+    "distinct_direct_contractors": 160,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 0,
+    "negotiated_value": 0,
+    "modifications": 27,
+    "modification_rate": 14.1,
+    "single_bidder_share": 0.0,
+    "single_bidder_n": 5,
+    "single_bidder_coverage": 13.5,
+    "data_completeness": 98.3,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 2.1,
+    "green_in_scope": 2,
+    "green_in_scope_share": 0.4,
+    "green_adopted_share": 0.0,
+    "green_adopted_value_share": 0.0,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 0,
+    "flagged_value": 0
    }
   },
   {
@@ -617,6 +894,55 @@
      "direct": 35,
      "all": 42
     }
+   },
+   "entities": [
+    {
+     "code": "50676",
+     "name": "Πολιτιστικός Οργανισμός Φεστιβάλ Ταινιών Μικρού Μήκους Δήμου Δράμας (ΝΠΔΔ)",
+     "contracts": 135,
+     "direct": 129,
+     "value": 871991,
+     "direct_value": 762674
+    }
+   ],
+   "with_entities": {
+    "contracts": 683,
+    "value": 15153692,
+    "direct": 600,
+    "direct_value": 4487279,
+    "direct_share_count": 87.8,
+    "direct_share_value": 29.6,
+    "direct_share_value_incl_flagged": 32.1,
+    "band_28_30": 26,
+    "band_share_of_direct": 4.3,
+    "repeat_pairs": 35,
+    "repeat_awards": 129,
+    "repeat_share_of_direct_value": 17.3,
+    "cum_same_pairs": 9,
+    "cum_same_share_of_direct_value": 10.3,
+    "cum_any_groups": 41,
+    "cum_any_share_of_direct_value": 50.9,
+    "top5_share_of_direct_value": 10.6,
+    "hhi_direct": 80,
+    "distinct_direct_contractors": 331,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 15,
+    "negotiated_value": 154816,
+    "modifications": 26,
+    "modification_rate": 4.6,
+    "single_bidder_share": 48.6,
+    "single_bidder_n": 37,
+    "single_bidder_coverage": 44.6,
+    "data_completeness": 98.8,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 0.5,
+    "green_in_scope": 0,
+    "green_in_scope_share": 0.0,
+    "green_adopted_share": null,
+    "green_adopted_value_share": null,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 1,
+    "flagged_value": 563712
    }
   },
   {
@@ -691,6 +1017,55 @@
      "direct": 33,
      "all": 36
     }
+   },
+   "entities": [
+    {
+     "code": "50413",
+     "name": "ΔΕΥΑ Καστοριάς (ΝΠΙΔ)",
+     "contracts": 164,
+     "direct": 162,
+     "value": 1364968,
+     "direct_value": 1242283
+    }
+   ],
+   "with_entities": {
+    "contracts": 534,
+    "value": 4284644,
+    "direct": 522,
+    "direct_value": 3381811,
+    "direct_share_count": 97.8,
+    "direct_share_value": 78.9,
+    "direct_share_value_incl_flagged": 78.9,
+    "band_28_30": 12,
+    "band_share_of_direct": 2.3,
+    "repeat_pairs": 33,
+    "repeat_awards": 129,
+    "repeat_share_of_direct_value": 15.3,
+    "cum_same_pairs": 8,
+    "cum_same_share_of_direct_value": 10.7,
+    "cum_any_groups": 32,
+    "cum_any_share_of_direct_value": 54.3,
+    "top5_share_of_direct_value": 13.4,
+    "hhi_direct": 106,
+    "distinct_direct_contractors": 269,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 3,
+    "negotiated_value": 48494,
+    "modifications": 20,
+    "modification_rate": 3.8,
+    "single_bidder_share": 50.0,
+    "single_bidder_n": 2,
+    "single_bidder_coverage": 16.7,
+    "data_completeness": 99.7,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 0.0,
+    "green_in_scope": 3,
+    "green_in_scope_share": 0.6,
+    "green_adopted_share": 66.7,
+    "green_adopted_value_share": 93.4,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 0,
+    "flagged_value": 0
    }
   },
   {
@@ -983,6 +1358,63 @@
      "direct": 34,
      "all": 39
     }
+   },
+   "entities": [
+    {
+     "code": "50453",
+     "name": "ΔΕΥΑ Ρεθύμνης (ΝΠΙΔ)",
+     "contracts": 119,
+     "direct": 36,
+     "value": 6096224,
+     "direct_value": 524998
+    },
+    {
+     "code": "50273",
+     "name": "Δημοτικό Λιμενικό Ταμείο Ρεθύμνου (ΝΠΔΔ)",
+     "contracts": 100,
+     "direct": 93,
+     "value": 1429306,
+     "direct_value": 704570
+    }
+   ],
+   "with_entities": {
+    "contracts": 591,
+    "value": 29482241,
+    "direct": 385,
+    "direct_value": 3654735,
+    "direct_share_count": 65.1,
+    "direct_share_value": 12.4,
+    "direct_share_value_incl_flagged": 17.6,
+    "band_28_30": 25,
+    "band_share_of_direct": 6.5,
+    "repeat_pairs": 16,
+    "repeat_awards": 52,
+    "repeat_share_of_direct_value": 20.5,
+    "cum_same_pairs": 7,
+    "cum_same_share_of_direct_value": 11.1,
+    "cum_any_groups": 22,
+    "cum_any_share_of_direct_value": 37.6,
+    "top5_share_of_direct_value": 16.0,
+    "hhi_direct": 128,
+    "distinct_direct_contractors": 260,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 26,
+    "negotiated_value": 590427,
+    "modifications": 73,
+    "modification_rate": 15.7,
+    "single_bidder_share": 71.4,
+    "single_bidder_n": 35,
+    "single_bidder_coverage": 17.0,
+    "data_completeness": 95.1,
+    "reg_lag_median_days": 0,
+    "reg_lag_over30_share": 0.2,
+    "green_in_scope": 1,
+    "green_in_scope_share": 0.2,
+    "green_adopted_share": 100.0,
+    "green_adopted_value_share": 100.0,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 2,
+    "flagged_value": 1851774
    }
   },
   {
@@ -1130,6 +1562,55 @@
      "direct": 39,
      "all": 41
     }
+   },
+   "entities": [
+    {
+     "code": "54977",
+     "name": "Δημοτικό Μουσείο Καλαβρυτινού Ολοκαυτώματος (ΝΠΔΔ)",
+     "contracts": 33,
+     "direct": 33,
+     "value": 136690,
+     "direct_value": 136690
+    }
+   ],
+   "with_entities": {
+    "contracts": 472,
+    "value": 4219570,
+    "direct": 451,
+    "direct_value": 2886516,
+    "direct_share_count": 95.6,
+    "direct_share_value": 68.4,
+    "direct_share_value_incl_flagged": 68.4,
+    "band_28_30": 13,
+    "band_share_of_direct": 2.9,
+    "repeat_pairs": 30,
+    "repeat_awards": 112,
+    "repeat_share_of_direct_value": 18.3,
+    "cum_same_pairs": 10,
+    "cum_same_share_of_direct_value": 13.5,
+    "cum_any_groups": 27,
+    "cum_any_share_of_direct_value": 56.3,
+    "top5_share_of_direct_value": 13.9,
+    "hhi_direct": 111,
+    "distinct_direct_contractors": 260,
+    "unknown_contractor_awards": 0,
+    "negotiated_no_notice": 9,
+    "negotiated_value": 66381,
+    "modifications": 8,
+    "modification_rate": 1.7,
+    "single_bidder_share": 66.7,
+    "single_bidder_n": 3,
+    "single_bidder_coverage": 14.3,
+    "data_completeness": 99.2,
+    "reg_lag_median_days": 0.0,
+    "reg_lag_over30_share": 0.0,
+    "green_in_scope": 1,
+    "green_in_scope_share": 0.2,
+    "green_adopted_share": 100.0,
+    "green_adopted_value_share": 100.0,
+    "green_field_coverage": 100.0,
+    "data_quality_flags": 0,
+    "flagged_value": 0
    }
   }
  ],
