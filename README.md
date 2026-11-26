@@ -2,8 +2,10 @@
 
 Εργαλείο διαφάνειας του Urban Policy Lab (Πυλώνες 1 και 4) για τις απευθείας αναθέσεις των δήμων.
 
+Ζωντανά: https://rotise.urbanpolicylab.org · Μεθοδολογία: https://rotise.urbanpolicylab.org/#methodologia
+
 - **Σκέλος Α (Εικόνα):** δείκτες από το Open Data API του ΚΗΜΔΗΣ, μόνο συγκεντρωτικά ανά δήμο.
-- **Σκέλος Β (Ερώτηση):** έτοιμο αίτημα πρόσβασης (άρθρο 5 ν. 2690/1999, όπως ισχύει μετά το άρθρο 59 ν. 5143/2024) που υπογράφει ο πολίτης μέσω gov.gr.
+- **Σκέλος Β (Ερώτηση):** έτοιμο αίτημα πρόσβασης (άρθρο 5 ν. 2690/1999, όπως ισχύει μετά το άρθρο 59 ν. 5143/2024) που στέλνει ο ίδιος ο πολίτης· η ψηφιακή βεβαίωση του gov.gr συνιστάται.
 
 ## Πώς λειτουργεί
 | Μέρος | Αρχείο | Τι κάνει |
@@ -18,7 +20,7 @@
 1. Δημόσιο αποθετήριο GitHub (λογαριασμός UPL), ανέβασμα του φακέλου.
 2. Settings → Pages → Source: GitHub Actions.
 3. Actions → update-and-deploy → Run workflow.
-4. Προαιρετικά: υποτομέας `rotise.urbanpolicylab.org` (CNAME).
+4. Υποτομέας `rotise.urbanpolicylab.org`: CNAME στο papaki → `urbanpolicylab.github.io`, custom domain και Enforce HTTPS στο Settings → Pages (σε λειτουργία από 26.11.2026).
 
 Τοπικά: `cd etl && python build.py`, μετά `cd site && python -m http.server`.
 
