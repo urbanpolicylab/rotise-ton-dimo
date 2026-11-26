@@ -1,0 +1,451 @@
+<title>Ρώτησε τον Δήμο σου</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a civic ledger. One column of reading, the municipality "file" opens below the picker;
+   Σκέλος Α (picture) then Σκέλος Β (ask), then the register and the method. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#14213a; --ink-2:#4a5670; --rule:#d9dee8;
+  --accent:#1f3d7a;        /* UPL navy */
+  --accent-soft:#e3e9f5;
+  --direct:#c2571a;        /* απευθείας ανάθεση */
+  --direct-soft:#f6e3d6;
+  --other:#8fa0bf;         /* λοιπές διαδικασίες */
+  --good:#2f7a4f; --warn:#a86a00;
+  --f-display:"Commissioner", "Inter", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Inter", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1522; --surface:#162034; --ink:#e7ecf5; --ink-2:#a7b2c8; --rule:#2a3650;
+  --accent:#8fb0f0; --accent-soft:#1d2c4a; --direct:#f0915a; --direct-soft:#3a2518; --other:#5d6f92;
+  --good:#6fcf97; --warn:#f2c14e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1522; --surface:#162034; --ink:#e7ecf5; --ink-2:#a7b2c8; --rule:#2a3650;
+  --accent:#8fb0f0; --accent-soft:#1d2c4a; --direct:#f0915a; --direct-soft:#3a2518; --other:#5d6f92;
+  --good:#6fcf97; --warn:#f2c14e; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:960px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(28px,5vw,40px);font-weight:700}
+h2{font-size:22px;font-weight:600}
+h3{font-size:16px;font-weight:600}
+p{margin:0}
+.muted{color:var(--ink-2)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+header.top{padding-block:32px 20px;display:grid;gap:10px;border-bottom:1px solid var(--rule)}
+header.top p{max-width:62ch}
+.badges{display:flex;flex-wrap:wrap;gap:8px;font-size:12px}
+.badge{border:1px solid var(--rule);border-radius:999px;padding:2px 10px;color:var(--ink-2)}
+.picker{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding-block:20px}
+.picker label{display:grid;gap:4px;font-size:13px;color:var(--ink-2);min-width:0;flex:1 1 280px}
+select,input,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;width:100%}
+select:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--rule);margin-top:8px}
+.tabs button{font:inherit;font-weight:600;background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--ink-2);cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+section.panel{padding-block:24px;display:grid;gap:24px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:20px;display:grid;gap:14px;min-width:0}
+.lead{font-family:var(--f-display);font-size:clamp(20px,3.2vw,26px);font-weight:600;line-height:1.3;max-width:34ch}
+.lead em{font-style:normal;color:var(--direct)}
+.tens{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:640px){.tens{grid-template-columns:1fr}}
+.ten{display:grid;gap:8px}
+.ten .row{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;max-width:320px}
+.ten .cell{aspect-ratio:1;border-radius:4px;background:var(--other);opacity:.35}
+.ten .cell.on{background:var(--direct);opacity:1}
+.ten .coin{border-radius:50%}
+.ten .cap{font-size:13px;color:var(--ink-2)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.metric{border-top:3px solid var(--rule);padding-top:10px;display:grid;gap:4px;min-width:0}
+.metric .v{font-family:var(--f-display);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+.metric .l{font-size:13px;color:var(--ink-2)}
+.metric .peer{font-size:12px;color:var(--ink-2)}
+.metric.hi{border-top-color:var(--direct)}
+.chart{overflow-x:auto}
+.chart svg{display:block;max-width:100%;height:auto}
+.note{border-left:3px solid var(--accent);background:var(--accent-soft);padding:12px 14px;border-radius:0 8px 8px 0;font-size:14px;display:grid;gap:6px}
+.note ul{margin:0;padding-left:18px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th{font-weight:600;color:var(--ink-2);font-size:12px;text-transform:uppercase;letter-spacing:.04em;cursor:pointer}
+td.num,th.num{text-align:right}
+tr.sel td{background:var(--accent-soft)}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--direct);vertical-align:middle;margin-left:6px}
+.qs{display:grid;gap:10px}
+.q{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--rule);border-radius:8px}
+.q input{width:auto;margin-top:4px}
+.q small{display:block;color:var(--ink-2)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{display:grid;gap:4px;font-size:13px;color:var(--ink-2);min-width:0}
+.form .full{grid-column:1/-1}
+@media (max-width:640px){.form{grid-template-columns:1fr}}
+textarea{min-height:320px;font-size:13.5px;line-height:1.5}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button.primary,button.ghost{font:inherit;font-weight:600;border-radius:6px;padding:9px 16px;cursor:pointer}
+button.primary{background:var(--accent);color:var(--surface);border:1px solid var(--accent)}
+button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.steps{margin:0;padding-left:20px;display:grid;gap:6px}
+.addr{font-family:ui-monospace,Consolas,monospace;background:var(--accent-soft);padding:2px 6px;border-radius:4px;user-select:all}
+.empty{border:1px dashed var(--rule);border-radius:10px;padding:20px;color:var(--ink-2);text-align:center}
+footer{border-top:1px solid var(--rule);padding-top:16px;margin-top:24px;font-size:13px;color:var(--ink-2);display:grid;gap:6px}
+a{color:var(--accent)}
+.status{font-size:13px;color:var(--good)}
+.prose{max-width:78ch}
+.prose h3{margin-top:10px}
+.prose ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.prose td{white-space:normal;vertical-align:top;min-width:120px}
+@media (prefers-reduced-motion:no-preference){.ten .cell{transition:background .3s}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">Urban Policy Lab · Πυλώνες 1 και 4 · πιλοτική έκδοση</span>
+  <h1>Ρώτησε τον Δήμο σου</h1>
+  <p class="muted">Τι δείχνουν τα δημόσια δεδομένα για τις απευθείας αναθέσεις του δήμου σου, και ένα έτοιμο αίτημα για όσα δεν δείχνουν. Δεν βαθμολογούμε δήμους για «διαφθορά»: δείχνουμε ενδείξεις και μετράμε αν ο δήμος απαντά.</p>
+  <div class="badges"><span class="badge" id="b-period">Περίοδος: —</span><span class="badge" id="b-updated">Ενημέρωση: —</span><span class="badge">Πηγή: ΚΗΜΔΗΣ (CC BY 4.0)</span></div>
+</header>
+
+<div class="picker">
+  <label for="muni">Δήμος
+    <select id="muni"></select>
+  </label>
+</div>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" id="tab-a" aria-selected="true" aria-controls="panel-a">Α · Τι δείχνουν τα δεδομένα</button>
+  <button role="tab" id="tab-b" aria-selected="false" aria-controls="panel-b">Β · Ρώτησε τον δήμο</button>
+  <button role="tab" id="tab-c" aria-selected="false" aria-controls="panel-c">Σύγκριση 14 δήμων</button>
+  <button role="tab" id="tab-m" aria-selected="false" aria-controls="panel-m">Μεθοδολογία</button>
+</nav>
+
+<section class="panel" id="panel-m" role="tabpanel" aria-labelledby="tab-m" hidden>
+  <div class="card prose">
+    <h2>Μεθοδολογία</h2>
+    <p>Το εργαλείο κάνει δύο πράγματα. Δείχνει ενδείξεις κινδύνου για τις απευθείας αναθέσεις κάθε δήμου, από δημόσια δεδομένα. Και μετατρέπει κάθε ένδειξη σε ερώτημα προς τον δήμο, μετρώντας αν απαντά. Δεν βγάζει συμπέρασμα για παρανομία ή διαφθορά.</p>
+
+    <h3>Πηγή και μονάδα μέτρησης</h3>
+    <ul>
+      <li><strong>Πηγή:</strong> το Open Data API του ΚΗΜΔΗΣ (άδεια CC BY 4.0), που ενημερώνεται καθημερινά. Ανακτώνται οι συμβάσεις και οι αναθέσεις κάθε δήμου, με τον κωδικό φορέα του στο ΚΗΜΔΗΣ.</li>
+      <li><strong>Περίοδος:</strong> οι τελευταίοι 12 πλήρεις μήνες, με βάση την ημερομηνία καταχώρισης στο ΚΗΜΔΗΣ.</li>
+      <li><strong>Μονάδα:</strong> η «προμήθεια», δηλαδή μια αρχική σύμβαση ή μια ανάθεση που δεν συνδέεται με σύμβαση. Έτσι δεν χάνονται οι μικρές αναθέσεις χωρίς γραπτή σύμβαση και δεν μετριέται τίποτα δύο φορές.</li>
+      <li><strong>Εξαιρούνται:</strong> ακυρωμένες πράξεις, τροποποιήσεις και προγραμματικές συμβάσεις μεταξύ φορέων του Δημοσίου.</li>
+      <li><strong>Αξίες:</strong> χωρίς ΦΠΑ.</li>
+    </ul>
+
+    <h3>Οι δείκτες</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Δείκτης</th><th>Ορισμός</th><th>Αντίστοιχη ένδειξη διεθνώς</th></tr></thead>
+      <tbody>
+        <tr><td>Απευθείας αναθέσεις, % αριθμού και % αξίας</td><td>Διαδικασία «απευθείας ανάθεση» (άρθρο 118 ν. 4412/2016) προς το σύνολο των προμηθειών</td><td>OCP R013, R010</td></tr>
+        <tr><td>Ζώνη 28–30 χιλ. €</td><td>Απευθείας αναθέσεις με αξία 28.000–29.999 €, ως % των απευθείας αναθέσεων</td><td>OCP R049, R002· ΟΟΣΑ 2025, κεφ. 3</td></tr>
+        <tr><td>Επαναλαμβανόμενος ανάδοχος</td><td>% της αξίας των απευθείας αναθέσεων που πήγε σε ζεύγη ίδιου αναδόχου και ίδιας ομάδας CPV με τουλάχιστον 3 αναθέσεις στο 12μηνο</td><td>OCP R055· ΟΟΣΑ 2025, κεφ. 3</td></tr>
+        <tr><td>Αθροιστική υπέρβαση ορίου</td><td>% της αξίας των απευθείας αναθέσεων σε ζεύγη ίδιου αναδόχου και ίδιας ομάδας CPV που, μέσα στο ίδιο ημερολογιακό έτος, έχουν τουλάχιστον 2 αναθέσεις με άθροισμα άνω των 30.000 €. Το όριο του άρθρου 118 μετρά αθροιστικά για ομοειδείς ανάγκες του έτους.</td><td><a href="https://open-contracting.org/wp-content/uploads/2024/12/OCP2024-RedFlagProcurement-1.pdf" target="_blank" rel="noopener">OCP 2024, R055</a> «Multiple direct awards above or just below competitive threshold»</td></tr>
+        <tr><td>Συγκέντρωση (top-5)</td><td>Μερίδιο των 5 μεγαλύτερων αναδόχων στην αξία των απευθείας αναθέσεων</td><td>OCP R040, R050</td></tr>
+        <tr><td>Συγκέντρωση (HHI)</td><td>Δείκτης Herfindahl-Hirschman στην αξία των απευθείας αναθέσεων: άθροισμα των τετραγώνων των μεριδίων κάθε αναδόχου (0–10.000). Πάνω από 1.800 θεωρείται υψηλή συγκέντρωση.</td><td><a href="https://open-contracting.org/wp-content/uploads/2024/12/OCP2024-RedFlagProcurement-1.pdf" target="_blank" rel="noopener">OCP 2024, R051</a> «High market concentration»</td></tr>
+        <tr><td>Διαπραγμάτευση χωρίς δημοσίευση</td><td>Αριθμός διαδικασιών του άρθρου 32 ν. 4412/2016</td><td>OCP R013</td></tr>
+        <tr><td>Πιθανά λάθη καταχώρισης</td><td>Απευθείας αναθέσεις άνω των 60.000 €, που εξαιρούνται από τις αξίες</td><td>Ποιότητα δεδομένων</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Οι δείκτες σχεδιάστηκαν από τα ευρήματα του Ελεγκτικού Συνεδρίου (Έκθεση 4/2023), της Εθνικής Αρχής Διαφάνειας και του ΟΟΣΑ (2025) για την Ελλάδα. Η αντιστοίχιση με τον οδηγό του Open Contracting Partnership (2024, 73 ενδείξεις) έγινε στη συνέχεια, για έλεγχο. Δεν αντιγράφηκε κώδικας ή μεθοδολογία τρίτων.</p>
+
+    <h3>Σύγκριση με ομοειδείς δήμους</h3>
+    <p>Κάθε δήμος συγκρίνεται με τη διάμεσο της ομάδας του: μητροπολιτικοί, μεσαίοι, ορεινοί. Ένας ορεινός δήμος με μικρή τοπική αγορά δεν συγκρίνεται με τη Θεσσαλονίκη. Δεν βγαίνει γενική κατάταξη.</p>
+
+    <h3>Ερώτηση στον δήμο (Σκέλος Β)</h3>
+    <ul>
+      <li><strong>Νομική βάση:</strong> άρθρο 5 ν. 2690/1999, όπως αντικαταστάθηκε με το άρθρο 59 ν. 5143/2024 (ισχύς από 1.1.2025). Πρόσβαση έχει κάθε φυσικό ή νομικό πρόσωπο.</li>
+      <li><strong>Τι ζητείται:</strong> όσα δεν φαίνονται στο ΚΗΜΔΗΣ, δηλαδή προγραμματισμός, έρευνα αγοράς, αιτιολόγηση του επείγοντος, διαδικασία δηλώσεων σύγκρουσης συμφερόντων, λειτουργία του Συστήματος Εσωτερικού Ελέγχου (ν. 4795/2021).</li>
+      <li><strong>Υπογραφή:</strong> από τον ίδιο τον πολίτη, ψηφιακά μέσω gov.gr. Η σελίδα δεν αποθηκεύει στοιχεία πολιτών.</li>
+      <li><strong>Μητρώο:</strong> με κοινοποίηση στο rotise@urbanpolicylab.org, το UPL καταγράφει ανά δήμο πόσα αιτήματα στάλθηκαν, πόσα απαντήθηκαν και σε πόσες ημέρες. Δεν δημοσιεύονται ονόματα.</li>
+    </ul>
+
+    <h3>Περιορισμοί</h3>
+    <ul>
+      <li>Οι αριθμοί αντανακλούν ό,τι έχει καταχωριστεί στο ΚΗΜΔΗΣ. Ο Δήμος Αθηναίων, για παράδειγμα, καταχωρίζει λίγες πράξεις σε όλα τα στάδια· η αιτία θα διευκρινιστεί με τον δήμο.</li>
+      <li>Δεν μετρούν τα νομικά πρόσωπα και οι επιχειρήσεις των δήμων, που έχουν δικούς τους κωδικούς.</li>
+      <li>Για ορισμένες υπηρεσίες το όριο της απευθείας ανάθεσης είναι 60.000 €. Η ζώνη 30–60 χιλ. € θα εξεταστεί ξεχωριστά. Ο δείκτης R055 χρησιμοποιεί το όριο των 30.000 € για όλες τις κατηγορίες.</li>
+      <li>Ο δείκτης R055 μετρά ανά ημερολογιακό έτος· η περίοδος των 12 μηνών περιλαμβάνει δύο ημιτελή έτη, άρα μπορεί να υποεκτιμά.</li>
+      <li>Η ΚΥΑ 87338/2026 (Β΄ 6275/16.10.2026) αλλάζει τους κανόνες καταχώρισης στο ΚΗΜΔΗΣ, μεταξύ άλλων για τις τροποποιήσεις. Η επίπτωση στα δεδομένα θα ελεγχθεί.</li>
+    </ul>
+
+    <h3>Σύγκριση με άλλα εργαλεία</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Εργαλείο</th><th>Τι κάνει</th><th>Ανά δήμο</th><th>Αίτημα πολίτη</th><th>Μητρώο απαντήσεων</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://dapanes.com/" target="_blank" rel="noopener">dapanes.com</a> (Ελλάδα)</td><td>Δείκτες από τις εντολές πληρωμής του ΚΗΜΔΗΣ, ανάμεσά τους μερίδιο απευθείας αναθέσεων, «τείχος των 30.000 €», επαναλαμβανόμενες συμβάσεις</td><td>Ναι</td><td>Όχι</td><td>Όχι</td></tr>
+        <tr><td><a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/05/managing-public-procurement-risks-in-greece_024a3b20/27156f7c-en.pdf" target="_blank" rel="noopener">ΟΟΣΑ 2025</a> (Ελλάδα)</td><td>Πλαίσιο διαχείρισης κινδύνων και ενδείξεις για τους φορείς</td><td>Όχι</td><td>Όχι</td><td>Όχι</td></tr>
+        <tr><td><a href="https://open-contracting.org/redflags" target="_blank" rel="noopener">Open Contracting Partnership</a></td><td>Οδηγός 73 ενδείξεων κινδύνου (2024)</td><td>Μεθοδολογία</td><td>Όχι</td><td>Όχι</td></tr>
+        <tr><td><a href="https://opentender.eu/" target="_blank" rel="noopener">opentender.eu</a></td><td>Δείκτες κινδύνου σε διαγωνισμούς· για την Ελλάδα κυρίως TED</td><td>Περιορισμένα</td><td>Όχι</td><td>Όχι</td></tr>
+        <tr><td><a href="https://www.open-contracting.org/2024/12/04/how-to-make-better-public-procurement-decisions-with-business-intelligence-insights-from-ukraine/" target="_blank" rel="noopener">Prozorro / DOZORRO</a> (Ουκρανία)</td><td>Ενδείξεις κινδύνου, παρακολούθηση από την κοινωνία των πολιτών, κλιμάκωση σε ελεγκτικές αρχές</td><td>Ναι</td><td>Καταγγελίες</td><td>Βαθμολόγηση απαντήσεων</td></tr>
+        <tr><td><a href="https://www.open-contracting.org/2024/08/28/empowering-auditors-indonesia-uses-data-driven-oversight-to-clean-up-its-corruption-prone-procurement-sector/" target="_blank" rel="noopener">ICW opentender.net</a> (Ινδονησία)</td><td>Ενδείξεις κινδύνου για προτεραιοποίηση ελέγχων</td><td>Ναι</td><td>Καταγγελίες</td><td>Χρόνοι απάντησης</td></tr>
+        <tr><td><a href="https://www.open-contracting.org/2021/12/14/setting-up-for-success-data-and-public-oversight-for-more-transparent-public-procurement-in-kosovo/" target="_blank" rel="noopener">Κοσσυφοπέδιο</a></td><td>Παρακολούθηση δημοτικών προμηθειών από οργανώσεις</td><td>Ναι</td><td>Αιτήματα πληροφόρησης</td><td>Ποσοστό απάντησης</td></tr>
+        <tr><td><a href="https://fragdenstaat.de/ueber/" target="_blank" rel="noopener">FragDenStaat</a> (Γερμανία)</td><td>Πλατφόρμα αιτημάτων πρόσβασης</td><td>—</td><td>Ναι</td><td>Ναι</td></tr>
+      </tbody>
+    </table></div>
+    <p>Νέο στο εργαλείο είναι ο συνδυασμός: ένδειξη από τα δεδομένα, αίτημα που υπογράφει ο πολίτης, δημόσιο μητρώο απαντήσεων ανά δήμο. Δεν βρήκαμε ελληνική πλατφόρμα αιτημάτων πρόσβασης τύπου FragDenStaat.</p>
+
+    <h3>Επόμενα βήματα</h3>
+    <ul>
+      <li>Ακραίες τιμές μέσα σε κάθε ομάδα δήμων.</li>
+      <li>Καταστάσεις αιτήματος στο μητρώο (σε αναμονή, εκπρόθεσμο, απαντήθηκε, αρνήθηκε) και βαθμολόγηση της απάντησης.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel" id="panel-a" role="tabpanel" aria-labelledby="tab-a">
+  <div class="card">
+    <p class="lead" id="lead">Φόρτωση δεδομένων…</p>
+    <div class="tens">
+      <div class="ten"><div class="row" id="ten-count"></div><span class="cap">Στις 10 προμήθειες: πόσες χωρίς διαγωνισμό</span></div>
+      <div class="ten"><div class="row" id="ten-value"></div><span class="cap">Στα 10 ευρώ: πόσα πήγαν σε απευθείας αναθέσεις</span></div>
+    </div>
+  </div>
+  <div class="metrics" id="metrics"></div>
+  <div class="card"><h3>Μερίδιο απευθείας αναθέσεων ανά τρίμηνο (σε αριθμό)</h3><div class="chart" id="qchart"></div></div>
+  <div class="note">
+    <strong>Τι δεν λένε αυτοί οι αριθμοί</strong>
+    <ul>
+      <li>Η απευθείας ανάθεση είναι νόμιμη διαδικασία έως 30.000 € χωρίς ΦΠΑ (άρθρο 118 ν. 4412/2016). Μια ένδειξη κινδύνου δεν είναι διαπίστωση παρανομίας.</li>
+      <li>Δεν δείχνουμε ονόματα ή ΑΦΜ αναδόχων, μόνο συγκεντρωτικά στοιχεία ανά δήμο.</li>
+      <li>Οι αριθμοί είναι τόσο καλοί όσο οι καταχωρίσεις στο ΚΗΜΔΗΣ. Μεγάλοι δήμοι μπορεί να καταχωρίζουν μέρος των προμηθειών τους μέσω νομικών προσώπων ή επιχειρήσεών τους, που δεν μετρούν εδώ. Σύγκρινε τον δήμο με δήμους ίδιου τύπου, όχι με όλους.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="panel" id="panel-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+  <div class="card">
+    <h2>Ζήτα από τον δήμο όσα δεν δείχνει το ΚΗΜΔΗΣ</h2>
+    <p class="muted">Διάλεξε ερωτήματα. Το κείμενο φτιάχνεται εδώ, στη συσκευή σου: τα στοιχεία σου δεν αποθηκεύονται και δεν στέλνονται πουθενά από τη σελίδα.</p>
+    <div class="qs" id="qs"></div>
+  </div>
+  <div class="card">
+    <h3>Τα στοιχεία σου (για την υπογραφή)</h3>
+    <div class="form">
+      <label for="f-name">Ονοματεπώνυμο<input id="f-name" autocomplete="name"></label>
+      <label for="f-email">Email για την απάντηση<input id="f-email" type="email" autocomplete="email"></label>
+      <label class="full" for="f-addr">Διεύθυνση κατοικίας<input id="f-addr" autocomplete="street-address"></label>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Το αίτημα</h3>
+    <textarea id="letter" aria-label="Κείμενο αιτήματος"></textarea>
+    <div class="actions"><button class="primary" id="copy">Αντιγραφή κειμένου</button><span class="status" id="copied" hidden>Αντιγράφηκε</span></div>
+  </div>
+  <div class="card">
+    <h3>Πώς το υπογράφεις και το στέλνεις</h3>
+    <ol class="steps">
+      <li>Αντέγραψε το κείμενο σε έγγραφο και αποθήκευσέ το ως PDF.</li>
+      <li>Υπόγραψέ το ψηφιακά με την υπηρεσία «Ψηφιακή βεβαίωση εγγράφου» του gov.gr (<a href="https://docs.gov.gr" target="_blank" rel="noopener">docs.gov.gr</a>), με τους κωδικούς Taxisnet.</li>
+      <li>Στείλε το υπογεγραμμένο PDF στο πρωτόκολλο του δήμου: <span id="muni-email"></span></li>
+      <li id="cc-step">Για να μπει στο δημόσιο μητρώο απαντήσεων, κοινοποίησέ το και στο Urban Policy Lab: <span id="upl-email"></span></li>
+      <li>Κράτα τον αριθμό πρωτοκόλλου. Η διοίκηση οφείλει να απαντήσει μέσα στη νόμιμη προθεσμία.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="panel" id="panel-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+  <div class="card">
+    <h2>Οι 14 πιλοτικοί δήμοι</h2>
+    <p class="muted">Πάτησε μια στήλη για ταξινόμηση. Η σύγκριση έχει νόημα μέσα στην ίδια ομάδα.</p>
+    <div class="tablewrap"><table id="cmp"><thead></thead><tbody></tbody></table></div>
+  </div>
+  <div class="card">
+    <h2>Μητρώο αιτημάτων και απαντήσεων</h2>
+    <div id="register"></div>
+  </div>
+</section>
+
+<footer>
+  <span><strong>Μέθοδος.</strong> Κάθε εβδομάδα ένα script ανακτά από το Open Data API του ΚΗΜΔΗΣ τις συμβάσεις και τις αναθέσεις κάθε δήμου για τους τελευταίους 12 πλήρεις μήνες. «Επαναλαμβανόμενη ανάθεση»: ίδιος ανάδοχος, ίδια ομάδα CPV, τουλάχιστον 3 απευθείας αναθέσεις στο 12μηνο.</span>
+  <span id="f-method"></span>
+  <span>Δεδομένα: ΚΗΜΔΗΣ, άδεια CC BY 4.0. Κώδικας και μεθοδολογία: ανοιχτά. Urban Policy Lab, Πυλώνας 1 (Διακυβέρνηση, Λογοδοσία και Δείκτες Πόλης) και Πυλώνας 4 (Κοινωνία Πολιτών και Συμμετοχή).</span>
+</footer>
+</div>
+
+<script type="application/json" id="embedded-data"></script>
+<script>
+const UPL_CC = "rotise@urbanpolicylab.org"; // κοινοποίηση για το μητρώο απαντήσεων (alias προς Πυλώνα 4)
+const QUESTIONS = [
+  {id:"plan", t:"Ετήσιος προγραμματισμός προμηθειών", d:"Το εγκεκριμένο πρόγραμμα προμηθειών και υπηρεσιών του δήμου για το τρέχον και το προηγούμενο έτος.", why:"Χωρίς αυτόν δεν φαίνεται αν ομοειδείς ανάγκες κόπηκαν σε μικρότερες συμβάσεις."},
+  {id:"market", t:"Έρευνα αγοράς", d:"Τα έγγραφα έρευνας αγοράς (προσκλήσεις, ληφθείσες προσφορές, συγκριτικοί πίνακες) για τις απευθείας αναθέσεις άνω των 20.000 € χωρίς ΦΠΑ των τελευταίων 12 μηνών.", why:"Τεκμηριώνει γιατί επιλέχθηκε αυτός ο ανάδοχος και αυτή η τιμή."},
+  {id:"urgent", t:"Αιτιολόγηση του επείγοντος", d:"Τις αποφάσεις και τις αιτιολογικές εκθέσεις για κάθε σύμβαση που ανατέθηκε με διαπραγμάτευση χωρίς δημοσίευση λόγω κατεπείγοντος (άρθρο 32 παρ. 2 γ ν. 4412/2016) τους τελευταίους 12 μήνες.", why:"Το «απρόβλεπτο» και το «επείγον» δεν είναι το ίδιο πράγμα."},
+  {id:"coi", t:"Δηλώσεις σύγκρουσης συμφερόντων", d:"Ενημέρωση για το αν υπογράφονται δηλώσεις μη σύγκρουσης συμφερόντων (άρθρο 24 ν. 4412/2016) από όσους εισηγούνται και αποφασίζουν απευθείας αναθέσεις, και ποια υπηρεσία τις ελέγχει.", why:"Ζητάμε τη διαδικασία, όχι προσωπικά στοιχεία."},
+  {id:"audit", t:"Σύστημα Εσωτερικού Ελέγχου", d:"Ενημέρωση για τη λειτουργία του Συστήματος Εσωτερικού Ελέγχου (ν. 4795/2021): αν διενεργήθηκε έλεγχος στις προμήθειες, πόσα ευρήματα προέκυψαν και πόσα έχουν κλείσει.", why:"Μετρά αν οι έλεγχοι γίνονται και αν διορθώνουν κάτι."}
+];
+const $ = s => document.querySelector(s);
+const fmtInt = n => n == null ? "—" : new Intl.NumberFormat("el-GR").format(Math.round(n));
+const fmtEur = n => n == null ? "—" : new Intl.NumberFormat("el-GR",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
+const fmtPct = n => n == null ? "—" : n.toLocaleString("el-GR",{maximumFractionDigits:1}) + "%";
+const fmtDate = s => s ? new Date(s).toLocaleDateString("el-GR",{day:"numeric",month:"long",year:"numeric"}) : "—";
+let DATA = null, REG = [], CURRENT = null;
+const median = a => { const v = a.filter(x => x != null).sort((x,y)=>x-y); if(!v.length) return null; const m = Math.floor(v.length/2); return v.length%2 ? v[m] : (v[m-1]+v[m])/2; };
+function el(tag, attrs={}, ...kids){ const e = document.createElement(tag); for (const [k,v] of Object.entries(attrs)) { if (k==="class") e.className=v; else e.setAttribute(k,v); } for (const k of kids) e.append(k); return e; }
+
+function tens(id, share){ const box = $(id); box.replaceChildren(); const on = share == null ? 0 : Math.round(share/10); for(let i=0;i<10;i++) box.append(el("span",{class:"cell"+(id==="#ten-value"?" coin":"")+(i<on?" on":"")})); }
+
+function renderA(m){
+  const sc = m.direct_share_count, sv = m.direct_share_value;
+  const lead = $("#lead"); lead.replaceChildren();
+  if (!m.contracts){ lead.textContent = `Δεν βρέθηκαν καταχωρίσεις του ${m.name} στο ΚΗΜΔΗΣ για την περίοδο.`; }
+  else {
+    const n10 = Math.round(sc/10), v10 = Math.round(sv/10);
+    const vtxt = v10 < 1 ? "λιγότερο από 1" : (v10 === 1 ? "1" : String(v10));
+    lead.append(`${m.name}: από κάθε 10 προμήθειες, οι `, el("em",{}, String(n10)), ` έγιναν χωρίς διαγωνισμό· σε αξία είναι `, el("em",{}, vtxt), ` στα 10 ευρώ (${fmtPct(sv)}).`);
+  }
+  tens("#ten-count", sc); tens("#ten-value", sv);
+  const peers = DATA.municipalities.filter(x => x.group === m.group);
+  const mk = (key, label, fmt, hi, extra) => {
+    const med = median(peers.map(p => p[key]));
+    return el("div",{class:"metric"+(hi?" hi":"")}, el("span",{class:"v"}, fmt(m[key])), el("span",{class:"l"}, label), el("span",{class:"peer"}, `Διάμεσος ομάδας «${m.group}»: ${fmt(med)}` + (extra||"")));
+  };
+  $("#metrics").replaceChildren(
+    mk("direct_share_count","Απευθείας αναθέσεις, % του αριθμού προμηθειών",fmtPct,true),
+    mk("direct_share_value","Απευθείας αναθέσεις, % της αξίας",fmtPct,true),
+    mk("band_share_of_direct","Απευθείας αναθέσεις στη ζώνη 28–30 χιλ. € (% του αριθμού τους)",fmtPct,false),
+    mk("repeat_share_of_direct_value","Αξία που πήγε σε επαναλαμβανόμενες αναθέσεις στον ίδιο ανάδοχο (%)",fmtPct,false),
+    mk("r055_share_of_direct_value","Αξία σε ίδιο ανάδοχο και είδος που ξεπερνά αθροιστικά τα 30.000 € μέσα στο έτος (OCP R055)",fmtPct,true),
+    mk("top5_share_of_direct_value","Μερίδιο των 5 μεγαλύτερων αναδόχων στην αξία των απευθείας αναθέσεων",fmtPct,false),
+    mk("hhi_direct","Συγκέντρωση αναδόχων, δείκτης HHI 0–10.000 (υψηλή πάνω από 1.800· OCP R051)",fmtInt,false),
+    mk("negotiated_no_notice","Διαπραγματεύσεις χωρίς δημοσίευση (αριθμός)",fmtInt,false),
+    mk("data_quality_flags","Απευθείας αναθέσεις άνω των 60.000 €: πιθανά λάθη καταχώρισης",fmtInt,false)
+  );
+  drawQuarters(m);
+}
+
+function drawQuarters(m){
+  const q = Object.entries(m.by_quarter||{}).filter(([,v])=>v.all>0);
+  const box = $("#qchart"); box.replaceChildren();
+  if (!q.length){ box.append(el("p",{class:"muted"},"Δεν υπάρχουν αρκετά δεδομένα.")); return; }
+  const W=640,H=200,L=44,R=16,T=16,B=36, w=(W-L-R)/q.length;
+  const ns="http://www.w3.org/2000/svg", svg=document.createElementNS(ns,"svg");
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`); svg.setAttribute("role","img");
+  svg.setAttribute("aria-label",`Μερίδιο απευθείας αναθέσεων ανά τρίμηνο, ${m.name}`);
+  const y = v => T + (H-T-B)*(1-v/100);
+  const add = (tag, a, text) => { const e=document.createElementNS(ns,tag); for(const[k,v] of Object.entries(a)) e.setAttribute(k,v); if(text!=null) e.textContent=text; svg.append(e); return e; };
+  [0,25,50,75,100].forEach(t => { add("line",{x1:L,x2:W-R,y1:y(t),y2:y(t),stroke:"var(--rule)"}); add("text",{x:L-8,y:y(t)+4,"text-anchor":"end","font-size":11,fill:"var(--ink-2)"},t+"%"); });
+  q.forEach(([k,v],i)=>{ const s=100*v.direct/v.all, x=L+i*w+w*0.2, bw=w*0.6;
+    add("rect",{x,y:y(s),width:bw,height:Math.max(0,y(0)-y(s)),rx:3,fill:"var(--direct)"});
+    add("text",{x:x+bw/2,y:y(s)-6,"text-anchor":"middle","font-size":11,fill:"var(--ink)"},Math.round(s)+"%");
+    add("text",{x:x+bw/2,y:H-14,"text-anchor":"middle","font-size":11,fill:"var(--ink-2)"},k.replace("-Q"," Τ"));
+  });
+  box.append(svg);
+}
+
+function letterText(m){
+  const sel = QUESTIONS.filter(q => $("#q-"+q.id).checked);
+  const name = $("#f-name").value.trim() || "[Ονοματεπώνυμο]";
+  const addr = $("#f-addr").value.trim() || "[Διεύθυνση κατοικίας]";
+  const mail = $("#f-email").value.trim() || "[Email]";
+  const today = new Date().toLocaleDateString("el-GR");
+  const items = sel.length ? sel.map((q,i)=>`${i+1}. ${q.d}`).join("\n") : "[Επιλέξτε τουλάχιστον ένα ερώτημα]";
+  return `Προς: ${m.name}
+Υπόψη: Γραφείο Πρωτοκόλλου / Διεύθυνση Οικονομικών Υπηρεσιών
+
+Θέμα: Αίτηση πρόσβασης σε έγγραφα (άρθρο 5 ν. 2690/1999, όπως αντικαταστάθηκε με το άρθρο 59 ν. 5143/2024)
+
+Ο/Η υπογράφων/-ουσα ${name}, κάτοικος ${addr}, ζητώ πρόσβαση στα ακόλουθα έγγραφα ή στοιχεία του Δήμου, που αφορούν τις δημόσιες συμβάσεις του:
+
+${items}
+
+Ζητώ να μου αποσταλούν σε ηλεκτρονική μορφή στη διεύθυνση ${mail}. Όπου ένα έγγραφο περιέχει προσωπικά δεδομένα τρίτων, παρακαλώ να μου χορηγηθεί με απαλοιφή τους.
+
+Παρακαλώ για απάντηση μέσα στη νόμιμη προθεσμία. Σε περίπτωση άρνησης, παρακαλώ για αιτιολογημένη απάντηση.
+
+${today}
+
+Ο/Η αιτών/-ούσα
+
+${name}
+(ψηφιακή υπογραφή μέσω gov.gr)`;
+}
+function renderB(m){
+  $("#letter").value = letterText(m);
+  const me = $("#muni-email"); me.replaceChildren();
+  const safeUrl = u => /^https:\/\//.test(u||"") ? u : null;
+  if (m.protocol_email) {
+    me.append(el("span",{class:"addr"}, m.protocol_email));
+    me.append(m.email_type === "protocol" ? " (πρωτόκολλο)." : " (γενικό email του δήμου· ζητήστε να πρωτοκολληθεί).");
+  } else {
+    me.append("ο δήμος δεν δημοσιεύει email πρωτοκόλλου. ");
+    const u = safeUrl(m.eservice_url);
+    if (u) { me.append("Υποβάλετε το αίτημα από την ηλεκτρονική υπηρεσία του: "); me.append(el("a",{href:u,target:"_blank",rel:"noopener"}, u.replace(/^https:\/\//,""))); me.append("."); }
+    else me.append("Υποβάλετε το αίτημα στο πρωτόκολλο του δήμου αυτοπροσώπως ή μέσω ΚΕΠ.");
+  }
+  const ue = $("#upl-email"); ue.replaceChildren();
+  if (UPL_CC) ue.append(el("span",{class:"addr"}, UPL_CC)); else ue.append("η διεύθυνση θα ανακοινωθεί με την έναρξη του πιλοτικού.");
+}
+
+let sortKey="direct_share_count", sortDir=-1;
+function renderC(){
+  const cols=[["name","Δήμος",""],["group","Ομάδα",""],["contracts","Προμήθειες","num"],["direct_share_count","Απευθ. % αριθμού","num"],["direct_share_value","Απευθ. % αξίας","num"],["band_share_of_direct","Ζώνη 28–30 χιλ.","num"],["repeat_share_of_direct_value","Επαναλ. ανάδοχος","num"],["r055_share_of_direct_value","R055","num"]];
+  const th=$("#cmp thead"); th.replaceChildren(); const tr=el("tr");
+  cols.forEach(([k,l,c])=>{ const h=el("th",{class:c,scope:"col"},l+(sortKey===k?(sortDir<0?" ↓":" ↑"):"")); h.addEventListener("click",()=>{ sortDir = sortKey===k ? -sortDir : -1; sortKey=k; renderC(); }); tr.append(h); });
+  th.append(tr);
+  const rows=[...DATA.municipalities].sort((a,b)=>{ const x=a[sortKey],y=b[sortKey]; return (typeof x==="string" ? x.localeCompare(y,"el") : (x??-1)-(y??-1))*sortDir; });
+  const tb=$("#cmp tbody"); tb.replaceChildren();
+  rows.forEach(m=>{ const r=el("tr",{class:m.id===CURRENT?"sel":""});
+    cols.forEach(([k,,c])=>{ let v=m[k]; let td;
+      if(k==="contracts") td=el("td",{class:c},fmtInt(v));
+      else if(c==="num"){ td=el("td",{class:c},fmtPct(v)); if(k==="direct_share_count"&&v!=null) td.append(el("span",{class:"bar",style:`width:${Math.round(v*0.6)}px`})); }
+      else td=el("td",{},v||"—");
+      r.append(td); });
+    tb.append(r); });
+  const reg=$("#register"); reg.replaceChildren();
+  if(!REG.length){ reg.append(el("div",{class:"empty"},"Δεν έχουν καταγραφεί ακόμη αιτήματα. Όταν ξεκινήσει το πιλοτικό, εδώ θα φαίνεται για κάθε δήμο πόσα αιτήματα στάλθηκαν, πόσα απαντήθηκαν και σε πόσες ημέρες.")); return; }
+  const t=el("table"); t.append(el("thead",{},el("tr",{},el("th",{},"Δήμος"),el("th",{class:"num"},"Αιτήματα"),el("th",{class:"num"},"Απαντήθηκαν"),el("th",{class:"num"},"Μέσες ημέρες"))));
+  const b=el("tbody");
+  const by={}; REG.forEach(x=>{ (by[x.municipality]??=[]).push(x); });
+  Object.entries(by).forEach(([k,list])=>{ const ans=list.filter(x=>x.answered_date); const days=ans.map(x=>(new Date(x.answered_date)-new Date(x.sent_date))/864e5);
+    const name=(DATA.municipalities.find(m=>m.id===k)||{}).name||k;
+    b.append(el("tr",{},el("td",{},name),el("td",{class:"num"},fmtInt(list.length)),el("td",{class:"num"},fmtInt(ans.length)),el("td",{class:"num"},days.length?fmtInt(days.reduce((a,c)=>a+c,0)/days.length):"—"))); });
+  t.append(b); const w=el("div",{class:"tablewrap"}); w.append(t); reg.append(w);
+}
+
+function select(id){
+  CURRENT=id; const m=DATA.municipalities.find(x=>x.id===id); if(!m) return;
+  try{ localStorage.setItem("rtd-muni",id); }catch(e){}
+  renderA(m); renderB(m); renderC();
+}
+function initTabs(){
+  const tabs=[["#tab-a","#panel-a","dedomena"],["#tab-b","#panel-b","rotise"],["#tab-c","#panel-c","sygkrisi"],["#tab-m","#panel-m","methodologia"]];
+  const show = t => tabs.forEach(([t2,p2])=>{ $(t2).setAttribute("aria-selected",String(t2===t)); $(p2).hidden = t2!==t; });
+  tabs.forEach(([t,,h])=>$(t).addEventListener("click",()=>{ show(t); try{ history.replaceState(null,"","#"+h); }catch(e){} }));
+  const fromHash = () => { const h=(location.hash||"").slice(1); const hit=tabs.find(x=>x[2]===h); if(hit) show(hit[0]); };
+  window.addEventListener("hashchange", fromHash); fromHash();
+}
+function initQuestions(){
+  const box=$("#qs");
+  QUESTIONS.forEach((q,i)=>{ const id="q-"+q.id; const cb=el("input",{type:"checkbox",id}); if(i<3) cb.checked=true;
+    cb.addEventListener("change",()=>renderB(DATA.municipalities.find(x=>x.id===CURRENT)));
+    const lab=el("label",{for:id}, el("strong",{},q.t), el("small",{},q.why));
+    box.append(el("div",{class:"q"},cb,lab)); });
+  ["#f-name","#f-addr","#f-email"].forEach(s=>$(s).addEventListener("input",()=>renderB(DATA.municipalities.find(x=>x.id===CURRENT))));
+  $("#copy").addEventListener("click",()=>{ const t=$("#letter"); const done=()=>{ $("#copied").hidden=false; setTimeout(()=>$("#copied").hidden=true,2500); };
+    navigator.clipboard?.writeText(t.value).then(done,()=>{ t.select(); }) ?? t.select(); });
+}
+async function boot(){
+  initTabs(); initQuestions();
+  try{
+    const emb = document.getElementById("embedded-data");
+    if (emb && emb.textContent.trim()) { const e = JSON.parse(emb.textContent); DATA = e.indicators; REG = e.requests || []; }
+    else {
+      DATA = await (await fetch("data/indicators.json")).json();
+      try{ REG = await (await fetch("data/requests.json")).json(); }catch(e){ REG=[]; }
+    }
+  }catch(e){ $("#lead").textContent="Τα δεδομένα δεν φορτώθηκαν. Δοκίμασε ξανά σε λίγο."; return; }
+  $("#b-period").textContent=`Περίοδος: ${fmtDate(DATA.period.from)} – ${fmtDate(DATA.period.to)}`;
+  $("#b-updated").textContent=`Ενημέρωση: ${fmtDate(DATA.generated_at)}`;
+  $("#f-method").textContent=`Έκδοση μεθοδολογίας ${DATA.method_version}. ${DATA.notes}`;
+  const sel=$("#muni"); const groups={};
+  DATA.municipalities.forEach(m=>{ (groups[m.group]??=[]).push(m); });
+  Object.entries(groups).forEach(([g,list])=>{ const og=el("optgroup",{label:g}); list.forEach(m=>og.append(el("option",{value:m.id},`${m.name} · ${m.region}`))); sel.append(og); });
+  let start=DATA.municipalities[0]?.id; try{ const s=localStorage.getItem("rtd-muni"); if(s&&DATA.municipalities.some(m=>m.id===s)) start=s; }catch(e){}
+  sel.value=start; sel.addEventListener("change",()=>select(sel.value)); select(start);
+}
+boot();
+</script>
