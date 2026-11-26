@@ -122,6 +122,15 @@ def indicators(orig, mods):
     hhi = round(sum((100 * v / v_known) ** 2 for v in by_firm.values())) if v_known else None
     unknown_n = sum(1 for c in direct if contractor(c) == UNKNOWN)
 
+    # Πράσινες προμήθειες (πεδίο greenContracts του ΚΗΜΔΗΣ, ανά γραμμή αντικειμένου)
+    # 1 = δεν εμπίπτει στο ΕΣΔ ΠΔΣ, 2 = εμπίπτει και υιοθετήθηκαν κριτήρια, 3 = εμπίπτει χωρίς κριτήρια
+    def green(c):
+        ks = {str((o.get("greenContracts") or {}).get("key")) for o in c.get("objectDetailsList") or []}
+        return "3" if "3" in ks else ("2" if "2" in ks else ("1" if "1" in ks else None))
+    g = [green(c) for c in orig]
+    g_in = [x for x in g if x in ("2", "3")]
+    g_in_value = sum(raw(c) for c, x in zip(orig, g) if x in ("2", "3"))
+    g_ok_value = sum(raw(c) for c, x in zip(orig, g) if x == "2")
     # Τροποποιήσεις, ένας προσφέρων, πληρότητα, χρόνος καταχώρισης
     signed = [c for c in orig if "contractSignedDate" in c]
     nond = [c for c in orig if proc(c) != DIRECT]
@@ -173,6 +182,11 @@ def indicators(orig, mods):
         "data_completeness": pct(filled, needed),
         "reg_lag_median_days": statistics.median(lags) if lags else None,
         "reg_lag_over30_share": pct(sum(1 for d in lags if d > 30), len(lags)),
+        "green_in_scope": len(g_in),
+        "green_in_scope_share": pct(len(g_in), len(orig)),
+        "green_adopted_share": pct(sum(1 for x in g_in if x == "2"), len(g_in)),
+        "green_adopted_value_share": pct(g_ok_value, g_in_value),
+        "green_field_coverage": pct(sum(1 for x in g if x is not None), len(orig)),
         "data_quality_flags": len(flagged), "flagged_value": round(sum(map(raw, flagged))),
         "by_quarter": {q: {"direct": a, "all": b} for q, (a, b) in sorted(quarters.items())},
     }
