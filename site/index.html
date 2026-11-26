@@ -32,6 +32,11 @@ h2{font-size:22px;font-weight:600}
 h3{font-size:16px;font-weight:600}
 p{margin:0}
 .muted{color:var(--ink-2)}
+.scope{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 4px}
+.scope button{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--rule);border-radius:999px;background:none;color:var(--ink);cursor:pointer}
+.scope button[aria-pressed="true"]{background:var(--ink);color:var(--bg,#fff);border-color:var(--ink)}
+.scope button:disabled{opacity:.45;cursor:not-allowed}
+.scope-note{font-size:13px;color:var(--ink-2);margin:4px 0 0}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
 header.top{padding-block:32px 20px;display:grid;gap:10px;border-bottom:1px solid var(--rule)}
 header.top p{max-width:62ch}
@@ -167,6 +172,14 @@ a{color:var(--accent)}
     <p class="muted">Οι δείκτες στηρίζονται στα ευρήματα του Ελεγκτικού Συνεδρίου (Έκθεση 4/2023), της <a href="https://aead.gr/press/elegtiko-ergo/elegxos-nomimotitas-synapsis-apefthias-symvaseon-nsltr-5" target="_blank" rel="noopener">Εθνικής Αρχής Διαφάνειας</a> και του <a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/05/managing-public-procurement-risks-in-greece_024a3b20/27156f7c-en.pdf" target="_blank" rel="noopener">ΟΟΣΑ (2025)</a> για την Ελλάδα. Η αντιστοίχιση με τον <a href="https://open-contracting.org/wp-content/uploads/2024/12/OCP2024-RedFlagProcurement-1.pdf" target="_blank" rel="noopener">οδηγό του Open Contracting Partnership (2024, 73 ενδείξεις)</a> έγινε για έλεγχο, και όπου ένας δείκτης προέρχεται από τον οδηγό σημειώνεται. Δεν χρησιμοποιήθηκε κώδικας τρίτων.</p>
     <p class="muted"><strong>Τι είναι το CPV.</strong> Το Κοινό Λεξιλόγιο για τις Δημόσιες Συμβάσεις (CPV, <a href="https://eur-lex.europa.eu/legal-content/EL/TXT/?uri=CELEX:32002R2195" target="_blank" rel="noopener">Κανονισμός (ΕΚ) 2195/2002</a>) δίνει σε κάθε είδος προμήθειας, υπηρεσίας ή έργου έναν οκταψήφιο κωδικό. Όσο περισσότερα ψηφία κοιτάμε, τόσο πιο συγκεκριμένο είναι το είδος: τα 3 πρώτα ψηφία ορίζουν ομάδα και τα 4 πρώτα κλάση. Μια υπόθεση στο ΚΗΜΔΗΣ μπορεί να έχει πολλές γραμμές με διαφορετικούς κωδικούς. Για να μπει σε ένα είδος, κρατάμε τον κωδικό της γραμμής με τη μεγαλύτερη αξία. Έτσι μια υπόθεση μετρά μία φορά, αλλά οι μικρότερες γραμμές της δεν φαίνονται στους δείκτες ανά είδος. Οι δείκτες συγκέντρωσης και επανάληψης μετρούν μόνο υποθέσεις με καταχωρισμένο ΑΦΜ αναδόχου.</p>
 
+    <h3>Δήμος και φορείς του</h3>
+    <p>Πολλοί δήμοι κάνουν μέρος των προμηθειών τους μέσω νομικών προσώπων και επιχειρήσεων που ελέγχουν: ΔΕΥΑ, κοινωφελείς επιχειρήσεις, οργανισμούς πολιτισμού και αθλητισμού, σχολικές επιτροπές. Αυτοί έχουν δικό τους κωδικό στο ΚΗΜΔΗΣ. Η επιλογή «Δήμος και φορείς του» προσθέτει τις υποθέσεις τους σε εκείνες του δήμου και υπολογίζει ξανά όλους τους δείκτες.</p>
+    <ul>
+      <li><strong>Ποιοι φορείς μετρούν:</strong> μόνο όσοι ανήκουν σε έναν δήμο. Οι σύνδεσμοι δήμων και οι αναπτυξιακές εταιρείες με περισσότερους μετόχους μένουν έξω, γιατί η δραστηριότητά τους δεν αποδίδεται σε έναν δήμο. Η λίστα ανά δήμο φαίνεται στην καρτέλα «Γνώρισε».</li>
+      <li><strong>Σύγκριση:</strong> στην προβολή αυτή κάθε δήμος συγκρίνεται με τους ομοειδείς, επίσης μαζί με τους φορείς τους, όπου έχουν εντοπιστεί.</li>
+      <li><strong>Γιατί έχει σημασία:</strong> ένας δήμος που κάνει πολλές προμήθειες μέσω φορέων φαίνεται να έχει λίγες καταχωρίσεις, αν μετρήσει κανείς μόνο τον ίδιο τον δήμο. Η σύγκριση με άλλους δήμους γίνεται τότε άνιση.</li>
+    </ul>
+
     <h3>Τι δεν μετράμε, και γιατί</h3>
     <p>Τέσσερις δείκτες που χρησιμοποιούν διεθνή εργαλεία δεν μπορούν να υπολογιστούν σήμερα από ανοιχτά δεδομένα για τους δήμους:</p>
     <ul>
@@ -216,8 +229,8 @@ a{color:var(--accent)}
     <h3>Περιορισμοί</h3>
     <ul>
       <li>Οι αριθμοί αντανακλούν ό,τι έχει καταχωριστεί στο ΚΗΜΔΗΣ.</li>
-      <li>Στον Δήμο Αθηναίων οι απευθείας αναθέσεις έχουν πολύ μικρότερο μερίδιο της αξίας από ό,τι στους άλλους μητροπολιτικούς δήμους. Δεν έχει ελεγχθεί αν αυτό οφείλεται στη σύνθεση των προμηθειών του, σε προμήθειες μέσω νομικών προσώπων του ή σε άλλη αιτία.</li>
-      <li>Δεν μετρούν ακόμη τα νομικά πρόσωπα και οι επιχειρήσεις των δήμων, που έχουν δικούς τους κωδικούς στο ΚΗΜΔΗΣ.</li>
+      <li>Στον Δήμο Αθηναίων οι απευθείας αναθέσεις έχουν πολύ μικρότερο μερίδιο της αξίας από ό,τι στους άλλους μητροπολιτικούς δήμους. Τα νομικά πρόσωπα που εντοπίσαμε δεν το εξηγούν: μαζί με αυτά το μερίδιο ανεβαίνει μόνο στο 60% σε αριθμό και στο 1,9% σε αξία. Δεν έχει ελεγχθεί αν οφείλεται στη σύνθεση των προμηθειών του, σε φορείς που δεν εντοπίσαμε ή σε άλλη αιτία.</li>
+      <li>Η λίστα των φορέων κάθε δήμου βγήκε από τα ονόματα των φορέων στο ΚΗΜΔΗΣ για τους μήνες Ιούνιο–Οκτώβριο 2026 και ελέγχθηκε με το μάτι. Φορείς που δεν έκαναν καμία καταχώριση εκείνους τους μήνες, ή που το όνομά τους δεν περιέχει το όνομα του δήμου, μπορεί να λείπουν.</li>
       <li>Για ορισμένες κατηγορίες το όριο της απευθείας ανάθεσης είναι 60.000 €. Η σωρευτική αξία χρησιμοποιεί το όριο των 30.000 € για όλες τις κατηγορίες. Η ζώνη 30–60 χιλ. € θα εξεταστεί χωριστά.</li>
       <li>Η σωρευτική αξία μετρά ανά ημερολογιακό έτος. Το 12μηνο κόβει δύο έτη, άρα ο δείκτης μάλλον υποεκτιμά.</li>
       <li>Οι πράσινες προμήθειες στηρίζονται μόνο στη δήλωση του δήμου. Στους 15 δήμους, 55 υποθέσεις δηλώθηκαν ότι εμπίπτουν στο Εθνικό Σχέδιο Δράσης, και έξι δήμοι δεν δήλωσαν καμία. Είναι απίθανο ένας μεγάλος δήμος να μην αγόρασε μέσα σε έναν χρόνο τίποτα από όσα καλύπτει το Σχέδιο. Τα χαμηλά ποσοστά δείχνουν μάλλον πώς συμπληρώνεται το πεδίο παρά πόσο πράσινα αγοράζει ο δήμος. Ο έλεγχος με βάση το CPV θα γίνει χωριστά.</li>
@@ -243,7 +256,7 @@ a{color:var(--accent)}
     <h3>Επόμενα βήματα</h3>
     <ul>
       <li>Έλεγχος του τι καταχωρίζεται στο ΚΗΜΔΗΣ ανά κατηγορία πράξης και του τι αλλάζει η ΚΥΑ 87338/2026.</li>
-      <li>Χωριστή προβολή «Δήμος και φορείς του» για τα νομικά πρόσωπα και τις επιχειρήσεις των δήμων.</li>
+      <li>Πλήρης λίστα φορέων από το Μητρώο Φορέων του Δημοσίου ή από τους ίδιους τους δήμους, αντί για αναζήτηση στα ονόματα.</li>
       <li>Επιβεβαίωση των ορεινών δήμων από το Μητρώο της ΕΛΣΤΑΤ.</li>
       <li>Επισήμανση των ακραίων τιμών μέσα σε κάθε ομάδα.</li>
       <li>Έλεγχος των δηλώσεων για τις πράσινες προμήθειες: ποιες υποθέσεις έχουν κωδικό CPV που καλύπτει το Εθνικό Σχέδιο Δράσης, αλλά δηλώθηκαν ότι δεν εμπίπτουν σε αυτό.</li>
@@ -255,6 +268,8 @@ a{color:var(--accent)}
   <div class="card">
     <p class="lead" id="lead">Φόρτωση δεδομένων…</p>
     <p class="muted" id="cats"></p>
+    <div class="scope" role="group" aria-label="Τι μετράμε"><span class="muted">Τι μετράμε:</span><button type="button" id="scope-muni" aria-pressed="true">Μόνο ο δήμος</button><button type="button" id="scope-with" aria-pressed="false">Δήμος και φορείς του</button></div>
+    <p class="scope-note" id="scope-note"></p>
     <div class="tens">
       <div class="ten"><div class="row" id="ten-count"></div><span class="cap">Στις 10 προμήθειες, πόσες έγιναν με απευθείας ανάθεση</span></div>
       <div class="ten"><div class="row" id="ten-value"></div><span class="cap">Στα 10 ευρώ, πόσα πήγαν σε απευθείας αναθέσεις</span></div>
@@ -352,7 +367,27 @@ function el(tag, attrs={}, ...kids){ const e = document.createElement(tag); for 
 
 function tens(id, share){ const box = $(id); box.replaceChildren(); const on = share == null ? 0 : Math.round(share/10); for(let i=0;i<10;i++) box.append(el("span",{class:"cell"+(id==="#ten-value"?" coin":"")+(i<on?" on":"")})); }
 
-function renderA(m){
+let SCOPE = "muni";
+const V = x => {
+  const o = (SCOPE === "with" && x.with_entities) ? Object.assign({}, x, x.with_entities) : Object.assign({}, x);
+  o.single_bidder_shown = (o.single_bidder_n >= 10) ? o.single_bidder_share : null;
+  return o;
+};
+function setScope(sc){
+  SCOPE = sc;
+  $("#scope-muni").setAttribute("aria-pressed", String(sc === "muni"));
+  $("#scope-with").setAttribute("aria-pressed", String(sc === "with"));
+  const m = DATA.municipalities.find(x => x.id === CURRENT); if (m) renderA(m);
+}
+function renderA(m0){
+  const ents = (m0.entities || []).filter(e => !e.error);
+  const withBtn = $("#scope-with"); withBtn.disabled = !m0.with_entities;
+  if (!m0.with_entities && SCOPE === "with") { SCOPE = "muni"; $("#scope-muni").setAttribute("aria-pressed","true"); withBtn.setAttribute("aria-pressed","false"); }
+  const note = $("#scope-note");
+  if (!m0.with_entities) note.textContent = "Δεν έχουν εντοπιστεί ακόμη νομικά πρόσωπα ή επιχειρήσεις του δήμου με δικό τους κωδικό στο ΚΗΜΔΗΣ.";
+  else if (SCOPE === "muni") note.textContent = `Ο δήμος έχει ${ents.length} ${ents.length === 1 ? "φορέα" : "φορείς"} με δικό τους κωδικό στο ΚΗΜΔΗΣ, που εδώ δεν μετρούν.`;
+  else note.textContent = "Μετρούν μαζί με τον δήμο: " + ents.map(e => `${e.name}, ${fmtInt(e.contracts)} υποθέσεις`).join(" · ") + ". Οι ομοειδείς δήμοι μετρούν επίσης με τους φορείς τους, όπου έχουν εντοπιστεί. Το γράφημα ανά τρίμηνο δείχνει μόνο τον δήμο.";
+  const m = V(m0);
   const sc = m.direct_share_count, sv = m.direct_share_value;
   const lead = $("#lead"); lead.replaceChildren();
   if (!m.contracts){ lead.textContent = `Δεν βρέθηκαν καταχωρίσεις του ${m.name} στο ΚΗΜΔΗΣ για την περίοδο.`; }
@@ -362,15 +397,14 @@ function renderA(m){
     lead.append(`${m.name}: από κάθε 10 καταγεγραμμένες προμήθειες, οι `, el("em",{}, String(n10)), ` έγιναν με απευθείας ανάθεση· σε αξία είναι `, el("em",{}, vtxt), ` στα 10 ευρώ (${fmtPct(sv)}).`);
   }
   tens("#ten-count", sc); tens("#ten-value", sv);
-  DATA.municipalities.forEach(x => { x.single_bidder_shown = (x.single_bidder_n >= 10) ? x.single_bidder_share : null; });
-  const peers = DATA.municipalities.filter(x => x.group === m.group);
+  const peers = DATA.municipalities.filter(x => x.group === m.group).map(V);
   const few = peers.length < 3 ? (peers.length === 1 ? " (μόνο ένας δήμος στην ομάδα)" : ` (μόνο ${peers.length} δήμοι στην ομάδα)`) : "";
   const cats = $("#cats"); cats.textContent = (m.categories && m.categories.length) ? `Κατηγορίες του δήμου στον νόμο (άρθρο 8 ν. 5314/2026): ${m.categories.join(" · ")}` : "";
   const mk = (key, label, fmt, hi, extra) => {
     const med = median(peers.map(p => p[key]));
     return el("div",{class:"metric"+(hi?" hi":"")}, el("span",{class:"v"}, fmt(m[key])), el("span",{class:"l"}, label), el("span",{class:"peer"}, `Διάμεσος ομάδας «${m.group}»${few}: ${fmt(med)}` + (extra||"")));
   };
-  const flagNote = m.data_quality_flags ? ` · Μαζί με τις ${m.data_quality_flags} επισημασμένες τιμές: ${fmtPct(m.direct_share_value_incl_flagged)}` : "";
+  const flagNote = m.data_quality_flags ? ` · Μαζί με ${m.data_quality_flags === 1 ? "την 1 επισημασμένη τιμή" : `τις ${m.data_quality_flags} επισημασμένες τιμές`}: ${fmtPct(m.direct_share_value_incl_flagged)}` : "";
   $("#metrics").replaceChildren(
     mk("direct_share_count","Πόσες προμήθειες έγιναν με απευθείας ανάθεση (%) · περιγραφικός",fmtPct,true),
     mk("direct_share_value","Τι μέρος της αξίας πήγε σε απευθείας αναθέσεις (%) · περιγραφικός",fmtPct,true,flagNote),
@@ -523,6 +557,7 @@ async function boot(){
   DATA.municipalities.forEach(m=>{ (groups[m.group]??=[]).push(m); });
   Object.entries(groups).forEach(([g,list])=>{ const og=el("optgroup",{label:g}); list.forEach(m=>og.append(el("option",{value:m.id},`${m.name} · ${m.region}`))); sel.append(og); });
   let start=DATA.municipalities[0]?.id; try{ const s=localStorage.getItem("rtd-muni"); if(s&&DATA.municipalities.some(m=>m.id===s)) start=s; }catch(e){}
+  $("#scope-muni").addEventListener("click",()=>setScope("muni")); $("#scope-with").addEventListener("click",()=>setScope("with"));
   sel.value=start; sel.addEventListener("change",()=>select(sel.value)); select(start);
 }
 boot();
