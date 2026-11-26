@@ -1,0 +1,37 @@
+# Κάθε Δευτέρα 05:00 UTC: ανανεώνει τους δείκτες από το ΚΗΜΔΗΣ και δημοσιεύει τη σελίδα (GitHub Pages).
+name: update-and-deploy
+on:
+  schedule: [{cron: "0 5 * * 1"}]
+  workflow_dispatch: {}
+  push: {branches: [main], paths: ["site/**", "etl/**"]}
+permissions: {contents: write, pages: write, id-token: write}
+concurrency: {group: pages, cancel-in-progress: false}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Υπολογισμός δεικτών
+        if: github.event_name != 'push'
+        run: cd etl && python build.py
+      - name: Αποθήκευση δεδομένων στο αποθετήριο
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "rotise-ton-dimo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/data/indicators.json
+          git diff --cached --quiet || git commit -m "Ενημέρωση δεικτών ΚΗΜΔΗΣ $(date -u +%F)"
+          git push
+      - name: Πλήρες HTML για GitHub Pages
+        run: python tools/wrap.py
+      - uses: actions/upload-pages-artifact@v3
+        with: {path: _site}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: {name: github-pages, url: "${{ steps.d.outputs.page_url }}"}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4
