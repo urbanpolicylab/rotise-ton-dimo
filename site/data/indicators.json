@@ -1,0 +1,769 @@
+{
+ "generated_at": "2026-11-26T07:57:49+00:00",
+ "period": {
+  "from": "2025-11-01",
+  "to": "2026-10-31"
+ },
+ "method_version": "0.3",
+ "source": "ΚΗΜΔΗΣ Open Data API, https://cerpp.eprocurement.gov.gr/khmdhs-opendata/help (CC BY 4.0)",
+ "notes": "Μονάδα μέτρησης: υπόθεση προμήθειας = αρχική σύμβαση ή ανάθεση χωρίς σύνδεση με σύμβαση· εξαιρούνται ακυρώσεις, τροποποιήσεις και προγραμματικές συμβάσεις. Απευθείας αναθέσεις άνω των 60.000 € χωρίς ΦΠΑ θεωρούνται πιθανά λάθη καταχώρισης και δεν μετρούν στις αξίες. Ημερομηνία = καταχώριση στο ΚΗΜΔΗΣ. Αξίες χωρίς ΦΠΑ.",
+ "municipalities": [
+  {
+   "id": "athina",
+   "name": "Δήμος Αθηναίων",
+   "group": "Μητροπολιτικός",
+   "region": "Αττικής",
+   "khmdhs_code": "6013",
+   "protocol_email": "",
+   "email_type": "",
+   "eservice_url": "https://rantevou.cityofathens.gr/",
+   "contracts": 260,
+   "value": 168865270,
+   "direct": 130,
+   "direct_value": 1539971,
+   "direct_share_count": 50.0,
+   "direct_share_value": 0.9,
+   "band_28_30": 18,
+   "band_share_of_direct": 13.8,
+   "repeat_pairs": 2,
+   "repeat_awards": 7,
+   "repeat_share_of_direct_value": 0.7,
+   "top5_share_of_direct_value": 19.3,
+   "hhi_direct": 198,
+   "hhi_high": false,
+   "r055_pairs": 1,
+   "r055_awards": 2,
+   "r055_share_of_direct_value": 3.8,
+   "distinct_direct_contractors": 108,
+   "negotiated_no_notice": 13,
+   "negotiated_value": 5188693,
+   "modifications": 61,
+   "data_quality_flags": 1,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 40,
+     "all": 67
+    },
+    "2026-Q1": {
+     "direct": 23,
+     "all": 38
+    },
+    "2026-Q2": {
+     "direct": 29,
+     "all": 71
+    },
+    "2026-Q3": {
+     "direct": 25,
+     "all": 59
+    },
+    "2026-Q4": {
+     "direct": 13,
+     "all": 25
+    }
+   }
+  },
+  {
+   "id": "peiraias",
+   "name": "Δήμος Πειραιά",
+   "group": "Μητροπολιτικός",
+   "region": "Αττικής",
+   "khmdhs_code": "6243",
+   "protocol_email": "protokolo@piraeus.gov.gr",
+   "email_type": "protocol",
+   "eservice_url": "",
+   "contracts": 611,
+   "value": 23012864,
+   "direct": 523,
+   "direct_value": 3062220,
+   "direct_share_count": 85.6,
+   "direct_share_value": 13.3,
+   "band_28_30": 27,
+   "band_share_of_direct": 5.2,
+   "repeat_pairs": 17,
+   "repeat_awards": 331,
+   "repeat_share_of_direct_value": 13.5,
+   "top5_share_of_direct_value": 13.7,
+   "hhi_direct": 130,
+   "hhi_high": false,
+   "r055_pairs": 16,
+   "r055_awards": 139,
+   "r055_share_of_direct_value": 28.9,
+   "distinct_direct_contractors": 158,
+   "negotiated_no_notice": 31,
+   "negotiated_value": 3280881,
+   "modifications": 43,
+   "data_quality_flags": 2,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 125,
+     "all": 149
+    },
+    "2026-Q1": {
+     "direct": 27,
+     "all": 45
+    },
+    "2026-Q2": {
+     "direct": 155,
+     "all": 179
+    },
+    "2026-Q3": {
+     "direct": 158,
+     "all": 172
+    },
+    "2026-Q4": {
+     "direct": 58,
+     "all": 66
+    }
+   }
+  },
+  {
+   "id": "peristeri",
+   "name": "Δήμος Περιστερίου",
+   "group": "Μητροπολιτικός",
+   "region": "Αττικής",
+   "khmdhs_code": "6247",
+   "protocol_email": "",
+   "email_type": "",
+   "eservice_url": "https://digital.peristeri.gr",
+   "contracts": 376,
+   "value": 13284085,
+   "direct": 296,
+   "direct_value": 4012925,
+   "direct_share_count": 78.7,
+   "direct_share_value": 30.2,
+   "band_28_30": 33,
+   "band_share_of_direct": 11.1,
+   "repeat_pairs": 10,
+   "repeat_awards": 35,
+   "repeat_share_of_direct_value": 9.5,
+   "top5_share_of_direct_value": 13.7,
+   "hhi_direct": 124,
+   "hhi_high": false,
+   "r055_pairs": 7,
+   "r055_awards": 20,
+   "r055_share_of_direct_value": 9.4,
+   "distinct_direct_contractors": 166,
+   "negotiated_no_notice": 8,
+   "negotiated_value": 233680,
+   "modifications": 22,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 87,
+     "all": 104
+    },
+    "2026-Q1": {
+     "direct": 23,
+     "all": 50
+    },
+    "2026-Q2": {
+     "direct": 85,
+     "all": 101
+    },
+    "2026-Q3": {
+     "direct": 65,
+     "all": 81
+    },
+    "2026-Q4": {
+     "direct": 36,
+     "all": 40
+    }
+   }
+  },
+  {
+   "id": "thessaloniki",
+   "name": "Δήμος Θεσσαλονίκης",
+   "group": "Μητροπολιτικός",
+   "region": "Μακεδονίας–Θράκης",
+   "khmdhs_code": "6114",
+   "protocol_email": "info@thessaloniki.gr",
+   "email_type": "protocol",
+   "eservice_url": "https://politis.thessaloniki.gr/",
+   "contracts": 609,
+   "value": 207153722,
+   "direct": 300,
+   "direct_value": 2106068,
+   "direct_share_count": 49.3,
+   "direct_share_value": 1.0,
+   "band_28_30": 7,
+   "band_share_of_direct": 2.3,
+   "repeat_pairs": 12,
+   "repeat_awards": 50,
+   "repeat_share_of_direct_value": 5.9,
+   "top5_share_of_direct_value": 12.1,
+   "hhi_direct": 104,
+   "hhi_high": false,
+   "r055_pairs": 2,
+   "r055_awards": 4,
+   "r055_share_of_direct_value": 3.2,
+   "distinct_direct_contractors": 214,
+   "negotiated_no_notice": 76,
+   "negotiated_value": 11627250,
+   "modifications": 91,
+   "data_quality_flags": 6,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 84,
+     "all": 135
+    },
+    "2026-Q1": {
+     "direct": 36,
+     "all": 74
+    },
+    "2026-Q2": {
+     "direct": 78,
+     "all": 184
+    },
+    "2026-Q3": {
+     "direct": 70,
+     "all": 143
+    },
+    "2026-Q4": {
+     "direct": 32,
+     "all": 73
+    }
+   }
+  },
+  {
+   "id": "kalamaria",
+   "name": "Δήμος Καλαμαριάς",
+   "group": "Μητροπολιτικός",
+   "region": "Μακεδονίας–Θράκης",
+   "khmdhs_code": "6129",
+   "protocol_email": "protokologen@kalamaria.gr",
+   "email_type": "protocol",
+   "eservice_url": "https://eservices.kalamaria.gr/",
+   "contracts": 469,
+   "value": 7938992,
+   "direct": 432,
+   "direct_value": 1903980,
+   "direct_share_count": 92.1,
+   "direct_share_value": 24.0,
+   "band_28_30": 11,
+   "band_share_of_direct": 2.5,
+   "repeat_pairs": 27,
+   "repeat_awards": 247,
+   "repeat_share_of_direct_value": 14.6,
+   "top5_share_of_direct_value": 17.1,
+   "hhi_direct": 141,
+   "hhi_high": false,
+   "r055_pairs": 4,
+   "r055_awards": 18,
+   "r055_share_of_direct_value": 8.1,
+   "distinct_direct_contractors": 161,
+   "negotiated_no_notice": 0,
+   "negotiated_value": 0,
+   "modifications": 27,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 78,
+     "all": 83
+    },
+    "2026-Q1": {
+     "direct": 76,
+     "all": 90
+    },
+    "2026-Q2": {
+     "direct": 122,
+     "all": 129
+    },
+    "2026-Q3": {
+     "direct": 105,
+     "all": 110
+    },
+    "2026-Q4": {
+     "direct": 51,
+     "all": 57
+    }
+   }
+  },
+  {
+   "id": "lavreotiki",
+   "name": "Δήμος Λαυρεωτικής",
+   "group": "Μεσαίος",
+   "region": "Αττικής",
+   "khmdhs_code": "6168",
+   "protocol_email": "",
+   "email_type": "",
+   "eservice_url": "https://dimotis.lavreotiki.gr/",
+   "contracts": 385,
+   "value": 12720801,
+   "direct": 342,
+   "direct_value": 3176053,
+   "direct_share_count": 88.8,
+   "direct_share_value": 25.0,
+   "band_28_30": 29,
+   "band_share_of_direct": 8.5,
+   "repeat_pairs": 18,
+   "repeat_awards": 89,
+   "repeat_share_of_direct_value": 26.9,
+   "top5_share_of_direct_value": 28.2,
+   "hhi_direct": 303,
+   "hhi_high": false,
+   "r055_pairs": 8,
+   "r055_awards": 33,
+   "r055_share_of_direct_value": 24.4,
+   "distinct_direct_contractors": 178,
+   "negotiated_no_notice": 8,
+   "negotiated_value": 7978505,
+   "modifications": 10,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 102,
+     "all": 135
+    },
+    "2026-Q1": {
+     "direct": 18,
+     "all": 19
+    },
+    "2026-Q2": {
+     "direct": 104,
+     "all": 106
+    },
+    "2026-Q3": {
+     "direct": 93,
+     "all": 96
+    },
+    "2026-Q4": {
+     "direct": 25,
+     "all": 29
+    }
+   }
+  },
+  {
+   "id": "drama",
+   "name": "Δήμος Δράμας",
+   "group": "Μεσαίος",
+   "region": "Μακεδονίας–Θράκης",
+   "khmdhs_code": "6081",
+   "protocol_email": "info@dimosdramas.gr",
+   "email_type": "general",
+   "eservice_url": "",
+   "contracts": 548,
+   "value": 14281701,
+   "direct": 471,
+   "direct_value": 3724604,
+   "direct_share_count": 85.9,
+   "direct_share_value": 26.1,
+   "band_28_30": 21,
+   "band_share_of_direct": 4.5,
+   "repeat_pairs": 27,
+   "repeat_awards": 94,
+   "repeat_share_of_direct_value": 15.6,
+   "top5_share_of_direct_value": 12.2,
+   "hhi_direct": 97,
+   "hhi_high": false,
+   "r055_pairs": 8,
+   "r055_awards": 23,
+   "r055_share_of_direct_value": 11.5,
+   "distinct_direct_contractors": 275,
+   "negotiated_no_notice": 15,
+   "negotiated_value": 154816,
+   "modifications": 26,
+   "data_quality_flags": 1,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 136,
+     "all": 166
+    },
+    "2026-Q1": {
+     "direct": 28,
+     "all": 47
+    },
+    "2026-Q2": {
+     "direct": 136,
+     "all": 141
+    },
+    "2026-Q3": {
+     "direct": 136,
+     "all": 152
+    },
+    "2026-Q4": {
+     "direct": 35,
+     "all": 42
+    }
+   }
+  },
+  {
+   "id": "kastoria",
+   "name": "Δήμος Καστοριάς",
+   "group": "Μεσαίος",
+   "region": "Ηπείρου–Δυτικής Μακεδονίας",
+   "khmdhs_code": "6141",
+   "protocol_email": "protokolo@kastoria.gov.gr",
+   "email_type": "protocol",
+   "eservice_url": "https://aitimata.kastoria.gov.gr/",
+   "contracts": 370,
+   "value": 2919676,
+   "direct": 360,
+   "direct_value": 2139527,
+   "direct_share_count": 97.3,
+   "direct_share_value": 73.3,
+   "band_28_30": 6,
+   "band_share_of_direct": 1.7,
+   "repeat_pairs": 24,
+   "repeat_awards": 94,
+   "repeat_share_of_direct_value": 12.7,
+   "top5_share_of_direct_value": 17.4,
+   "hhi_direct": 158,
+   "hhi_high": false,
+   "r055_pairs": 6,
+   "r055_awards": 14,
+   "r055_share_of_direct_value": 12.7,
+   "distinct_direct_contractors": 190,
+   "negotiated_no_notice": 3,
+   "negotiated_value": 48494,
+   "modifications": 20,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 105,
+     "all": 107
+    },
+    "2026-Q1": {
+     "direct": 5,
+     "all": 5
+    },
+    "2026-Q2": {
+     "direct": 140,
+     "all": 140
+    },
+    "2026-Q3": {
+     "direct": 77,
+     "all": 82
+    },
+    "2026-Q4": {
+     "direct": 33,
+     "all": 36
+    }
+   }
+  },
+  {
+   "id": "karditsa",
+   "name": "Δήμος Καρδίτσας",
+   "group": "Μεσαίος",
+   "region": "Θεσσαλίας–Στερεάς Ελλάδας",
+   "khmdhs_code": "6135",
+   "protocol_email": "protokolo@dimoskarditsas.gov.gr",
+   "email_type": "protocol",
+   "eservice_url": "https://eservices.dimoskarditsas.gov.gr/",
+   "contracts": 598,
+   "value": 9464608,
+   "direct": 559,
+   "direct_value": 3448034,
+   "direct_share_count": 93.5,
+   "direct_share_value": 36.4,
+   "band_28_30": 28,
+   "band_share_of_direct": 5.0,
+   "repeat_pairs": 37,
+   "repeat_awards": 181,
+   "repeat_share_of_direct_value": 23.2,
+   "top5_share_of_direct_value": 14.5,
+   "hhi_direct": 119,
+   "hhi_high": false,
+   "r055_pairs": 12,
+   "r055_awards": 51,
+   "r055_share_of_direct_value": 18.2,
+   "distinct_direct_contractors": 255,
+   "negotiated_no_notice": 11,
+   "negotiated_value": 1297294,
+   "modifications": 56,
+   "data_quality_flags": 2,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 126,
+     "all": 135
+    },
+    "2026-Q1": {
+     "direct": 71,
+     "all": 79
+    },
+    "2026-Q2": {
+     "direct": 196,
+     "all": 202
+    },
+    "2026-Q3": {
+     "direct": 116,
+     "all": 128
+    },
+    "2026-Q4": {
+     "direct": 50,
+     "all": 54
+    }
+   }
+  },
+  {
+   "id": "tripoli",
+   "name": "Δήμος Τρίπολης",
+   "group": "Μεσαίος",
+   "region": "Πελοποννήσου, Δυτικής Ελλάδας και Ιονίου",
+   "khmdhs_code": "6299",
+   "protocol_email": "dimos@tripolis.gr",
+   "email_type": "general",
+   "eservice_url": "",
+   "contracts": 493,
+   "value": 13083431,
+   "direct": 455,
+   "direct_value": 4792969,
+   "direct_share_count": 92.3,
+   "direct_share_value": 36.6,
+   "band_28_30": 16,
+   "band_share_of_direct": 3.5,
+   "repeat_pairs": 25,
+   "repeat_awards": 106,
+   "repeat_share_of_direct_value": 25.1,
+   "top5_share_of_direct_value": 14.5,
+   "hhi_direct": 113,
+   "hhi_high": false,
+   "r055_pairs": 23,
+   "r055_awards": 83,
+   "r055_share_of_direct_value": 29.0,
+   "distinct_direct_contractors": 267,
+   "negotiated_no_notice": 2,
+   "negotiated_value": 76140,
+   "modifications": 37,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 74,
+     "all": 78
+    },
+    "2026-Q1": {
+     "direct": 54,
+     "all": 60
+    },
+    "2026-Q2": {
+     "direct": 154,
+     "all": 173
+    },
+    "2026-Q3": {
+     "direct": 133,
+     "all": 142
+    },
+    "2026-Q4": {
+     "direct": 40,
+     "all": 40
+    }
+   }
+  },
+  {
+   "id": "syros",
+   "name": "Δήμος Σύρου-Ερμούπολης",
+   "group": "Μεσαίος",
+   "region": "Αιγαίου",
+   "khmdhs_code": "6291",
+   "protocol_email": "dimos@syros-ermoupolis.gr",
+   "email_type": "protocol",
+   "eservice_url": "https://www.syros-ermoupolis.gr/request-form/",
+   "contracts": 551,
+   "value": 5796910,
+   "direct": 519,
+   "direct_value": 1139350,
+   "direct_share_count": 94.2,
+   "direct_share_value": 19.7,
+   "band_28_30": 1,
+   "band_share_of_direct": 0.2,
+   "repeat_pairs": 34,
+   "repeat_awards": 180,
+   "repeat_share_of_direct_value": 17.1,
+   "top5_share_of_direct_value": 13.7,
+   "hhi_direct": 138,
+   "hhi_high": false,
+   "r055_pairs": 1,
+   "r055_awards": 3,
+   "r055_share_of_direct_value": 3.0,
+   "distinct_direct_contractors": 214,
+   "negotiated_no_notice": 2,
+   "negotiated_value": 57221,
+   "modifications": 11,
+   "data_quality_flags": 3,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 117,
+     "all": 119
+    },
+    "2026-Q1": {
+     "direct": 72,
+     "all": 78
+    },
+    "2026-Q2": {
+     "direct": 168,
+     "all": 182
+    },
+    "2026-Q3": {
+     "direct": 105,
+     "all": 113
+    },
+    "2026-Q4": {
+     "direct": 57,
+     "all": 59
+    }
+   }
+  },
+  {
+   "id": "rethymno",
+   "name": "Δήμος Ρεθύμνης",
+   "group": "Μεσαίος",
+   "region": "Κρήτης",
+   "khmdhs_code": "6263",
+   "protocol_email": "dimos@rethymno.gr",
+   "email_type": "general",
+   "eservice_url": "https://www.rethymno.gr/e-services/e-requests",
+   "contracts": 372,
+   "value": 21956711,
+   "direct": 256,
+   "direct_value": 2425167,
+   "direct_share_count": 68.8,
+   "direct_share_value": 11.0,
+   "band_28_30": 13,
+   "band_share_of_direct": 5.1,
+   "repeat_pairs": 6,
+   "repeat_awards": 19,
+   "repeat_share_of_direct_value": 8.3,
+   "top5_share_of_direct_value": 18.8,
+   "hhi_direct": 166,
+   "hhi_high": false,
+   "r055_pairs": 4,
+   "r055_awards": 11,
+   "r055_share_of_direct_value": 9.2,
+   "distinct_direct_contractors": 190,
+   "negotiated_no_notice": 26,
+   "negotiated_value": 590427,
+   "modifications": 68,
+   "data_quality_flags": 1,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 71,
+     "all": 95
+    },
+    "2026-Q1": {
+     "direct": 5,
+     "all": 12
+    },
+    "2026-Q2": {
+     "direct": 84,
+     "all": 134
+    },
+    "2026-Q3": {
+     "direct": 62,
+     "all": 92
+    },
+    "2026-Q4": {
+     "direct": 34,
+     "all": 39
+    }
+   }
+  },
+  {
+   "id": "zagori",
+   "name": "Δήμος Ζαγορίου",
+   "group": "Ορεινός",
+   "region": "Ηπείρου–Δυτικής Μακεδονίας",
+   "khmdhs_code": "6099",
+   "protocol_email": "d.zagoriou@zagori.gr",
+   "email_type": "general",
+   "eservice_url": "",
+   "contracts": 134,
+   "value": 4229395,
+   "direct": 109,
+   "direct_value": 1179513,
+   "direct_share_count": 81.3,
+   "direct_share_value": 27.9,
+   "band_28_30": 4,
+   "band_share_of_direct": 3.7,
+   "repeat_pairs": 2,
+   "repeat_awards": 14,
+   "repeat_share_of_direct_value": 1.6,
+   "top5_share_of_direct_value": 27.9,
+   "hhi_direct": 298,
+   "hhi_high": false,
+   "r055_pairs": 2,
+   "r055_awards": 4,
+   "r055_share_of_direct_value": 8.1,
+   "distinct_direct_contractors": 70,
+   "negotiated_no_notice": 1,
+   "negotiated_value": 24196,
+   "modifications": 44,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 25,
+     "all": 37
+    },
+    "2026-Q1": {
+     "direct": 8,
+     "all": 9
+    },
+    "2026-Q2": {
+     "direct": 34,
+     "all": 38
+    },
+    "2026-Q3": {
+     "direct": 32,
+     "all": 39
+    },
+    "2026-Q4": {
+     "direct": 10,
+     "all": 11
+    }
+   }
+  },
+  {
+   "id": "kalavryta",
+   "name": "Δήμος Καλαβρύτων",
+   "group": "Ορεινός",
+   "region": "Πελοποννήσου, Δυτικής Ελλάδας και Ιονίου",
+   "khmdhs_code": "6128",
+   "protocol_email": "dimos@kalavrita.gr",
+   "email_type": "general",
+   "eservice_url": "https://eservices.kalavrita.gr",
+   "contracts": 439,
+   "value": 4082880,
+   "direct": 418,
+   "direct_value": 2749827,
+   "direct_share_count": 95.2,
+   "direct_share_value": 67.4,
+   "band_28_30": 10,
+   "band_share_of_direct": 2.4,
+   "repeat_pairs": 30,
+   "repeat_awards": 108,
+   "repeat_share_of_direct_value": 18.7,
+   "top5_share_of_direct_value": 14.5,
+   "hhi_direct": 119,
+   "hhi_high": false,
+   "r055_pairs": 9,
+   "r055_awards": 27,
+   "r055_share_of_direct_value": 13.9,
+   "distinct_direct_contractors": 239,
+   "negotiated_no_notice": 9,
+   "negotiated_value": 66381,
+   "modifications": 8,
+   "data_quality_flags": 0,
+   "by_quarter": {
+    "2025-Q4": {
+     "direct": 120,
+     "all": 123
+    },
+    "2026-Q1": {
+     "direct": 34,
+     "all": 36
+    },
+    "2026-Q2": {
+     "direct": 108,
+     "all": 111
+    },
+    "2026-Q3": {
+     "direct": 117,
+     "all": 128
+    },
+    "2026-Q4": {
+     "direct": 39,
+     "all": 41
+    }
+   }
+  }
+ ],
+ "incomplete": []
+}
