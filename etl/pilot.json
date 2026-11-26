@@ -1,10 +1,10 @@
 {
- "note": "Πιλοτικοί δήμοι (πρόταση UPL, 26.11.2026): 5 μητροπολιτικοί, 1 μεσαίος ανά Αποκεντρωμένη Διοίκηση, 2 ορεινοί. Η επιλογή των μεσαίων και των ορεινών είναι ενδεικτική και ελέγχεται με την Απογραφή 2021. Εξαιρούνται δήμοι που αναφέρονται σε εκκρεμείς καταγγελίες.",
+ "note": "Πιλοτικοί δήμοι UPL (26.11.2026). Ομάδες σύγκρισης και κατηγορίες κατά το άρθρο 8 του Κώδικα Τοπικής Αυτοδιοίκησης (ν. 5314/2026, Α΄ 103/29.06.2026). Οι κατηγορίες του νόμου επικαλύπτονται· για τη σύγκριση κάθε δήμος μπαίνει σε μία ομάδα. Εξαιρούνται δήμοι που αναφέρονται σε εκκρεμείς καταγγελίες.",
  "municipalities": [
   {
    "id": "athina",
    "name": "Δήμος Αθηναίων",
-   "group": "Μητροπολιτικός",
+   "group": "Μητροπολιτικά Κέντρα",
    "region": "Αττικής",
    "khmdhs_code": "6013",
    "match": "ΔΗΜΟΣ ΑΘΗΝΑΙΩΝ",
@@ -12,12 +12,15 @@
    "protocol_email": "",
    "email_type": "",
    "email_source": "https://www.cityofathens.gr/en/who/general-directorate-of-administration/",
-   "eservice_url": "https://rantevou.cityofathens.gr/"
+   "eservice_url": "https://rantevou.cityofathens.gr/",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10)"
+   ]
   },
   {
    "id": "peiraias",
    "name": "Δήμος Πειραιά",
-   "group": "Μητροπολιτικός",
+   "group": "Μητροπολιτικά Κέντρα",
    "region": "Αττικής",
    "khmdhs_code": "6243",
    "match": "ΔΗΜΟΣ ΠΕΙΡΑΙ",
@@ -25,12 +28,15 @@
    "protocol_email": "protokolo@piraeus.gov.gr",
    "email_type": "protocol",
    "email_source": "https://piraeus.gov.gr/ypiresion-dimou/",
-   "eservice_url": ""
+   "eservice_url": "",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10)"
+   ]
   },
   {
    "id": "peristeri",
    "name": "Δήμος Περιστερίου",
-   "group": "Μητροπολιτικός",
+   "group": "Μητροπολιτικά Κέντρα",
    "region": "Αττικής",
    "khmdhs_code": "6247",
    "match": "ΔΗΜΟΣ ΠΕΡΙΣΤΕΡΙΟΥ",
@@ -38,12 +44,15 @@
    "protocol_email": "",
    "email_type": "",
    "email_source": "https://www.peristeri.gr/epikoinonia/",
-   "eservice_url": "https://digital.peristeri.gr"
+   "eservice_url": "https://digital.peristeri.gr",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10)"
+   ]
   },
   {
    "id": "thessaloniki",
    "name": "Δήμος Θεσσαλονίκης",
-   "group": "Μητροπολιτικός",
+   "group": "Μητροπολιτικά Κέντρα",
    "region": "Μακεδονίας–Θράκης",
    "khmdhs_code": "6114",
    "match": "ΔΗΜΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ",
@@ -51,12 +60,15 @@
    "protocol_email": "info@thessaloniki.gr",
    "email_type": "protocol",
    "email_source": "https://aade.gr/sites/default/files/2025-09/diakirixi_dimoprosia_stegasi_kefode.pdf",
-   "eservice_url": "https://politis.thessaloniki.gr/"
+   "eservice_url": "https://politis.thessaloniki.gr/",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10)"
+   ]
   },
   {
    "id": "kalamaria",
    "name": "Δήμος Καλαμαριάς",
-   "group": "Μητροπολιτικός",
+   "group": "Μητροπολιτικά Κέντρα",
    "region": "Μακεδονίας–Θράκης",
    "khmdhs_code": "6129",
    "match": "ΔΗΜΟΣ ΚΑΛΑΜΑΡΙΑΣ",
@@ -64,12 +76,31 @@
    "protocol_email": "protokologen@kalamaria.gr",
    "email_type": "protocol",
    "email_source": "https://kalamaria.gr/wp-content/uploads/2026/09/PHONES_MAILS.pdf",
-   "eservice_url": "https://eservices.kalamaria.gr/"
+   "eservice_url": "https://eservices.kalamaria.gr/",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10)"
+   ]
+  },
+  {
+   "id": "thermi",
+   "name": "Δήμος Θέρμης",
+   "group": "Μητροπολιτικά Κέντρα",
+   "region": "Κεντρικής Μακεδονίας",
+   "khmdhs_code": "6112",
+   "match": "ΔΗΜΟΣ ΘΕΡΜΗΣ",
+   "khmdhs_name": "ΔΗΜΟΣ ΘΕΡΜΗΣ",
+   "protocol_email": "info@thermi.gov.gr",
+   "email_type": "general",
+   "email_source": "https://thermi.gov.gr/ (υποσέλιδο, 26.11.2026)",
+   "eservice_url": "",
+   "categories": [
+    "Δήμος Μητροπολιτικού Κέντρου (παρ. 10· νέος στην κατηγορία με τον ν. 5314/2026)"
+   ]
   },
   {
    "id": "lavreotiki",
    "name": "Δήμος Λαυρεωτικής",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Αττικής",
    "khmdhs_code": "6168",
    "match": "ΔΗΜΟΣ ΛΑΥΡΕΩΤΙΚΗΣ",
@@ -77,12 +108,15 @@
    "protocol_email": "",
    "email_type": "",
    "email_source": "https://www.lavreotiki.gr/epikoinonise-me-to-dimo-mas/",
-   "eservice_url": "https://dimotis.lavreotiki.gr/"
+   "eservice_url": "https://dimotis.lavreotiki.gr/",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)"
+   ]
   },
   {
    "id": "drama",
    "name": "Δήμος Δράμας",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Μακεδονίας–Θράκης",
    "khmdhs_code": "6081",
    "match": "ΔΗΜΟΣ ΔΡΑΜΑΣ",
@@ -90,12 +124,17 @@
    "protocol_email": "info@dimosdramas.gr",
    "email_type": "general",
    "email_source": "https://dimos-dramas.gr/epikinonia/",
-   "eservice_url": ""
+   "eservice_url": "",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)",
+    "Πρωτεύουσα νομού (παρ. 6)",
+    "Παραμεθόριος (παρ. 3)"
+   ]
   },
   {
    "id": "kastoria",
    "name": "Δήμος Καστοριάς",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Ηπείρου–Δυτικής Μακεδονίας",
    "khmdhs_code": "6141",
    "match": "ΔΗΜΟΣ ΚΑΣΤΟΡΙΑΣ",
@@ -103,12 +142,17 @@
    "protocol_email": "protokolo@kastoria.gov.gr",
    "email_type": "protocol",
    "email_source": "https://kastoria.gov.gr/",
-   "eservice_url": "https://aitimata.kastoria.gov.gr/"
+   "eservice_url": "https://aitimata.kastoria.gov.gr/",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)",
+    "Πρωτεύουσα νομού (παρ. 6)",
+    "Παραμεθόριος (παρ. 3)"
+   ]
   },
   {
    "id": "karditsa",
    "name": "Δήμος Καρδίτσας",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Θεσσαλίας–Στερεάς Ελλάδας",
    "khmdhs_code": "6135",
    "match": "ΔΗΜΟΣ ΚΑΡΔΙΤΣΑΣ",
@@ -116,12 +160,16 @@
    "protocol_email": "protokolo@dimoskarditsas.gov.gr",
    "email_type": "protocol",
    "email_source": "https://dimoskarditsas.gov.gr/tilefonikos-katalogos-dimou/",
-   "eservice_url": "https://eservices.dimoskarditsas.gov.gr/"
+   "eservice_url": "https://eservices.dimoskarditsas.gov.gr/",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)",
+    "Πρωτεύουσα νομού (παρ. 6)"
+   ]
   },
   {
    "id": "tripoli",
    "name": "Δήμος Τρίπολης",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Πελοποννήσου, Δυτικής Ελλάδας και Ιονίου",
    "khmdhs_code": "6299",
    "match": "ΔΗΜΟΣ ΤΡΙΠΟΛΗΣ",
@@ -129,12 +177,16 @@
    "protocol_email": "dimos@tripolis.gr",
    "email_type": "general",
    "email_source": "https://www.tripolis.gr/epikoinonia",
-   "eservice_url": ""
+   "eservice_url": "",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)",
+    "Πρωτεύουσα νομού (παρ. 6)"
+   ]
   },
   {
    "id": "syros",
    "name": "Δήμος Σύρου-Ερμούπολης",
-   "group": "Μεσαίος",
+   "group": "Νησιωτικοί",
    "region": "Αιγαίου",
    "khmdhs_code": "6291",
    "match": "ΣΥΡΟΥ",
@@ -142,12 +194,16 @@
    "protocol_email": "dimos@syros-ermoupolis.gr",
    "email_type": "protocol",
    "email_source": "https://www.syros-ermoupolis.gr/service-telephones/",
-   "eservice_url": "https://www.syros-ermoupolis.gr/request-form/"
+   "eservice_url": "https://www.syros-ermoupolis.gr/request-form/",
+   "categories": [
+    "Νησιωτικός (παρ. 4)",
+    "Πρωτεύουσα νομού (παρ. 6)"
+   ]
   },
   {
    "id": "rethymno",
    "name": "Δήμος Ρεθύμνης",
-   "group": "Μεσαίος",
+   "group": "Μεγάλοι ηπειρωτικοί",
    "region": "Κρήτης",
    "khmdhs_code": "6263",
    "match": "ΔΗΜΟΣ ΡΕΘΥΜΝ",
@@ -155,12 +211,16 @@
    "protocol_email": "dimos@rethymno.gr",
    "email_type": "general",
    "email_source": "https://www.rethymno.gr/contact.html",
-   "eservice_url": "https://www.rethymno.gr/e-services/e-requests"
+   "eservice_url": "https://www.rethymno.gr/e-services/e-requests",
+   "categories": [
+    "Μεγάλος ηπειρωτικός (παρ. 5)",
+    "Πρωτεύουσα νομού (παρ. 6)"
+   ]
   },
   {
    "id": "zagori",
    "name": "Δήμος Ζαγορίου",
-   "group": "Ορεινός",
+   "group": "Μικροί ορεινοί",
    "region": "Ηπείρου–Δυτικής Μακεδονίας",
    "khmdhs_code": "6099",
    "match": "ΖΑΓΟΡΙΟΥ",
@@ -168,12 +228,17 @@
    "protocol_email": "d.zagoriou@zagori.gr",
    "email_type": "general",
    "email_source": "https://www.zagori.gov.gr/wp-content/uploads/2021/10/ΑΠΟΓΡΑΦΗ-ΚΤΙΡΙΩΝ-ΠΛΗΘΥΣΜΟΥ-11-10-21.pdf",
-   "eservice_url": ""
+   "eservice_url": "",
+   "categories": [
+    "Μικρός ορεινός (παρ. 2)",
+    "Μικρός ηπειρωτικός (παρ. 8)",
+    "Παραμεθόριος (παρ. 3)"
+   ]
   },
   {
    "id": "kalavryta",
    "name": "Δήμος Καλαβρύτων",
-   "group": "Ορεινός",
+   "group": "Μικροί ορεινοί",
    "region": "Πελοποννήσου, Δυτικής Ελλάδας και Ιονίου",
    "khmdhs_code": "6128",
    "match": "ΚΑΛΑΒΡΥΤΩΝ",
@@ -181,7 +246,11 @@
    "protocol_email": "dimos@kalavrita.gr",
    "email_type": "general",
    "email_source": "https://www.kalavrita.gr/epikoinwnia/contactform",
-   "eservice_url": "https://eservices.kalavrita.gr"
+   "eservice_url": "https://eservices.kalavrita.gr",
+   "categories": [
+    "Μικρός ορεινός (παρ. 2)",
+    "Μικρός ηπειρωτικός (παρ. 8)"
+   ]
   }
  ]
 }

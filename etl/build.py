@@ -193,7 +193,7 @@ def main():
         except RuntimeError as e:
             print("παραλείφθηκε:", m["name"], e); failed.append(m["name"]); continue
         ind = indicators(*cases(got["contract"], got["auction"]))
-        out.append({k: m.get(k, "") for k in ("id", "name", "group", "region", "khmdhs_code", "protocol_email", "email_type", "eservice_url")} | ind)
+        out.append({k: m.get(k, "") for k in ("id", "name", "group", "region", "khmdhs_code", "protocol_email", "email_type", "eservice_url")} | {"categories": m.get("categories", [])} | ind)
         print(f"{m['name']}: {ind['contracts']} προμήθειες, απευθείας {ind['direct_share_count']}% / {ind['direct_share_value']}%")
     data = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
