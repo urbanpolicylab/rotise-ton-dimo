@@ -20,6 +20,8 @@ DIRECT, NEGOTIATED = "6", "12"
 BAND_LO, BAND_HI = 28_000, 30_000   # κλειστό διάστημα: 28.000 ≤ αξία ≤ 30.000
 REPEAT_MIN = 3              # ίδιος ανάδοχος, ίδια ομάδα CPV, ≥3 αναθέσεις στο 12μηνο
 UNKNOWN = "?"
+raw = lambda c: float(c.get("totalCostWithoutVAT") or 0)
+proc = lambda c: (c.get("procedureType") or {}).get("key")
 
 def months_back(end, n=12):
     """Πρώτη ημέρα του μήνα που απέχει n-1 μήνες από τον μήνα του end (12 πλήρεις μήνες)."""
@@ -207,6 +209,22 @@ def summary(rows):
                          "median_direct_share_value": med("direct_share_value", g)} for g in groups},
     }
 
+def fetch(tag, code, start, end, no_cache):
+    """Συμβάσεις και αναθέσεις ενός φορέα ΚΗΜΔΗΣ για την περίοδο, με τοπική προσωρινή αποθήκευση."""
+    got = {}
+    for resource, suf in (("contract", ""), ("auction", "_awrd")):
+        cache = ROOT / "etl" / ".cache" / f"{tag}{suf}_{start}_{end}.json"
+        if cache.exists() and not no_cache:
+            rows = json.loads(cache.read_text(encoding="utf-8"))
+        else:
+            rows = []
+            for a, b in windows(start, end):
+                rows += list(all_pages(resource, {"organizations": [code], "dateFrom": a, "dateTo": b}))
+            cache.parent.mkdir(exist_ok=True)
+            cache.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
+        got[resource] = dedupe(rows)
+    return got
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--end", help="τελευταία ημέρα περιόδου (προεπιλογή: τέλος προηγούμενου μήνα)")
@@ -216,27 +234,38 @@ def main():
     end = dt.date.fromisoformat(args.end) if args.end else today.replace(day=1) - dt.timedelta(days=1)
     start = months_back(end, 12)
     pilot = json.loads((ROOT / "etl" / "pilot.json").read_text(encoding="utf-8"))
+    ef = ROOT / "etl" / "entities.json"
+    entities = json.loads(ef.read_text(encoding="utf-8")).get("include", {}) if ef.exists() else {}
     out, failed = [], []
     for m in pilot["municipalities"]:
         if not m.get("khmdhs_code"):
             print("χωρίς κωδικό ΚΗΜΔΗΣ:", m["name"]); failed.append(m["name"]); continue
-        got = {}
         try:
-            for resource, tag in (("contract", ""), ("auction", "_awrd")):
-                cache = ROOT / "etl" / ".cache" / f"{m['id']}{tag}_{start}_{end}.json"
-                if cache.exists() and not args.no_cache:
-                    rows = json.loads(cache.read_text(encoding="utf-8"))
-                else:
-                    rows = []
-                    for a, b in windows(start, end):
-                        rows += list(all_pages(resource, {"organizations": [m["khmdhs_code"]], "dateFrom": a, "dateTo": b}))
-                    cache.parent.mkdir(exist_ok=True)
-                    cache.write_text(json.dumps(rows, ensure_ascii=False), encoding="utf-8")
-                got[resource] = dedupe(rows)
+            got = fetch(m["id"], m["khmdhs_code"], start, end, args.no_cache)
         except RuntimeError as e:
             print("παραλείφθηκε:", m["name"], e); failed.append(m["name"]); continue
         ind = indicators(*cases(got["contract"], got["auction"]))
-        out.append({k: m.get(k, "") for k in ("id", "name", "group", "region", "khmdhs_code", "protocol_email", "email_type", "eservice_url")} | {"categories": m.get("categories", [])} | ind)
+        row = {k: m.get(k, "") for k in ("id", "name", "group", "region", "khmdhs_code", "protocol_email", "email_type", "eservice_url")} | {"categories": m.get("categories", [])} | ind
+        # Δήμος και φορείς του: οι υποθέσεις των φορείων προστίθενται σε αυτές του δήμου
+        ents = entities.get(m["id"], {})
+        if ents:
+            allc, alla, elist = list(got["contract"]), list(got["auction"]), []
+            for code, ename in ents.items():
+                try:
+                    eg = fetch(f"ent{code}", code, start, end, args.no_cache)
+                except RuntimeError as e:
+                    print("φορέας παραλείφθηκε:", ename, e); elist.append({"code": code, "name": ename, "error": True}); continue
+                orig, _ = cases(eg["contract"], eg["auction"])
+                ed = [c for c in orig if proc(c) == DIRECT]
+                elist.append({"code": code, "name": ename, "contracts": len(orig), "direct": len(ed),
+                              "value": round(sum(raw(c) for c in orig if not (proc(c) == DIRECT and raw(c) > MAX_DIRECT))),
+                              "direct_value": round(sum(raw(c) for c in ed if raw(c) <= MAX_DIRECT))})
+                allc += eg["contract"]; alla += eg["auction"]
+            comb = indicators(*cases(dedupe(allc), dedupe(alla)))
+            comb.pop("by_quarter", None)
+            row["entities"] = elist
+            row["with_entities"] = comb
+        out.append(row)
         print(f"{m['name']}: {ind['contracts']} προμήθειες, απευθείας {ind['direct_share_count']}% / {ind['direct_share_value']}%")
     data = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
