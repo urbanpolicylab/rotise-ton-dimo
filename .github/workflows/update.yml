@@ -9,10 +9,19 @@ concurrency: {group: pages, cancel-in-progress: false}
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env: {PYTHONUNBUFFERED: "1", PYTHONIOENCODING: "utf-8"}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
+      - name: Έλεγχος σύνδεσης με το ΚΗΜΔΗΣ
+        if: github.event_name != 'push'
+        run: >-
+          curl -sS -m 60 -o /dev/null -w "KHMDHS HTTP %{http_code} in %{time_total}s"
+          -X POST "https://cerpp.eprocurement.gov.gr/khmdhs-opendata/contract?page=0"
+          -H "Content-Type: application/json"
+          -d '{"dateFrom":"2026-10-01","dateTo":"2026-10-01","procedureType":"6"}'
       - name: Υπολογισμός δεικτών
         if: github.event_name != 'push'
         run: cd etl && python build.py
