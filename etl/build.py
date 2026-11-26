@@ -12,7 +12,7 @@ import argparse, collections, datetime as dt, json, pathlib, statistics
 from khmdhs import all_pages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-METHOD_VERSION = "0.4"
+METHOD_VERSION = "0.5"
 THRESHOLD = 30_000          # γενικό όριο απευθείας ανάθεσης, άρθρο 118 ν. 4412/2016 (χωρίς ΦΠΑ)
 MAX_DIRECT = 60_000         # ανώτατο ειδικό όριο· πάνω από αυτό, η τιμή επισημαίνεται για έλεγχο
 EXCLUDE_TITLE = ("ΠΡΟΓΡΑΜΜΑΤΙΚΗ ΣΥΜΒΑΣΗ", "ΠΡΟΓΡΑΜΜΑΤΙΚΗΣ ΣΥΜΒΑΣΗΣ")
@@ -122,6 +122,29 @@ def indicators(orig, mods):
     hhi = round(sum((100 * v / v_known) ** 2 for v in by_firm.values())) if v_known else None
     unknown_n = sum(1 for c in direct if contractor(c) == UNKNOWN)
 
+    # Τροποποιήσεις, ένας προσφέρων, πληρότητα, χρόνος καταχώρισης
+    signed = [c for c in orig if "contractSignedDate" in c]
+    nond = [c for c in orig if proc(c) != DIRECT]
+    nond_b = [c for c in nond if c.get("bidsSubmitted") is not None]
+    single = sum(1 for c in nond_b if c.get("bidsSubmitted") == 1)
+    # Πληρότητα: ποσοστό των πεδίων που θα έπρεπε να είναι συμπληρωμένα και είναι
+    filled = needed = 0
+    for c in orig:
+        checks = [contractor(c) != UNKNOWN, cpv_prefix(c, 3) != UNKNOWN, raw(c) > 0]
+        if "contractSignedDate" in c:
+            ada = c.get("diavgeiaADA") or any((c.get("contractRelatedADA") or {}).values())
+            checks += [bool(c.get("contractSignedDate")), bool(ada)]
+            if proc(c) != DIRECT: checks.append(c.get("bidsSubmitted") is not None)
+        filled += sum(checks); needed += len(checks)
+    lags = []
+    for c in signed:
+        sd, sub = c.get("contractSignedDate"), (c.get("submissionDate") or "")[:10]
+        try:
+            d = (dt.date.fromisoformat(sub) - dt.date.fromisoformat(sd[:10])).days
+            if d >= 0: lags.append(d)
+        except (TypeError, ValueError):
+            pass
+
     quarters = collections.defaultdict(lambda: [0, 0])
     for c in orig:
         d = (c.get("submissionDate") or "")[:7]
@@ -144,6 +167,12 @@ def indicators(orig, mods):
         "hhi_direct": hhi, "distinct_direct_contractors": len(by_firm), "unknown_contractor_awards": unknown_n,
         "negotiated_no_notice": len(nego), "negotiated_value": round(sum(map(val, nego))),
         "modifications": mods,
+        "modification_rate": pct(mods, len(signed)),
+        "single_bidder_share": pct(single, len(nond_b)), "single_bidder_n": len(nond_b),
+        "single_bidder_coverage": pct(len(nond_b), len(nond)),
+        "data_completeness": pct(filled, needed),
+        "reg_lag_median_days": statistics.median(lags) if lags else None,
+        "reg_lag_over30_share": pct(sum(1 for d in lags if d > 30), len(lags)),
         "data_quality_flags": len(flagged), "flagged_value": round(sum(map(raw, flagged))),
         "by_quarter": {q: {"direct": a, "all": b} for q, (a, b) in sorted(quarters.items())},
     }
